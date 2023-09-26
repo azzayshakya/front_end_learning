@@ -8,7 +8,7 @@ function App() {
   return (
     <>
 
-    <Navbar/>
+    <Navbar title="ajay" about="about me"/>
 
       
 </>
