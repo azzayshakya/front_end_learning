@@ -37,8 +37,20 @@ const Navbar = (props) => {
     </div>
     ;
 }
+
+
 Navbar.propTypes = {title:propTypes.string,
 about:PropTypes.string}
+
+
+Navbar.defaultProps={
+  title:'ajay is here',
+  about:'its my about'
+};
+
+
+
+
 Navbar.propTypes = propTypes;
 Navbar.defaultProps = defaultProps;
 // #endregion
