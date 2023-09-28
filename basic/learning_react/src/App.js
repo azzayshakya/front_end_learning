@@ -17,10 +17,6 @@ function App() {
     </div>
     
 
-    
-  
-
-      
 </div>
   );
 }

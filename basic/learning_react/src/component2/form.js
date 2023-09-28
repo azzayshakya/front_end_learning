@@ -33,10 +33,10 @@ const Form = (props) => {
     <label for="exampleFormControlTextarea1">Example textarea</label>
     <textarea className="form-control" value={text} onChange={hanleOnChange} id="exampleFormControlTextarea1" rows="8"></textarea>
   </div>
-<button className="btn btn-primary" onClick={handleUpClick}>convert to upercase</button> 
+<button className="btn btn-primarygi" onClick={handleUpClick}>convert to upercase</button> 
 
 
-</div>;
+  </div>;
 }
 
 
