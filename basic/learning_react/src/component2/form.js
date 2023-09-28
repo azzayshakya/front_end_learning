@@ -11,7 +11,9 @@ const Form = (props) => {
 
     const handleUpClick =()=>{
         console.log("you are clicking");
-        setText("you have clicked on handle up text")
+        let newText= text.toUpperCase();
+        
+        setText(newText)
             }
             
 
