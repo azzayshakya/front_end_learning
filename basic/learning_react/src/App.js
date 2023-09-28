@@ -10,7 +10,12 @@ function App() {
     <div>
 
     <Navbar title="ajay" about="about me"/>
-     <Form/>
+
+    <div className="container my-3">
+    <Form heading="enter the text you want to analyze"/>
+
+    </div>
+    
 
     
   
