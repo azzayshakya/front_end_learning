@@ -2,7 +2,7 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import Form from './component2/form';
-
+import About from './components/about';
 
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
     <Form heading="enter the text you want to analyze"/>
 
     </div>
+     <About/>
     
 
     </div>

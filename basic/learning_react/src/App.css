@@ -43,3 +43,22 @@
   height: 40px;
   width: 250px;
 }
+
+.lesgo{
+  background-color: blueviolet;
+}
+
+.lesgi:hover{
+  background-color:red ;
+}
+
+.circle{
+  border: 2px red solid;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.circle:hover{
+  border: 100%;
+}
