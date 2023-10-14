@@ -11,10 +11,10 @@ function App() {
 
     <Navbar title="ajay" about="about me"/>
 
-    <div className="container my-3">
+    {/* <div className="container my-3">
     <Form heading="enter the text you want to analyze"/>
 
-    </div>
+    </div> */}
      <About/>
     
 

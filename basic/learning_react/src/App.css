@@ -37,20 +37,17 @@
   }
 } */
 
-
+/* textarea{
+  background-color: blue;
+  color:red; */
+/* }
 .btn-primarygi{
   background: blue;
   height: 40px;
   width: 250px;
 }
+ */
 
-.lesgo{
-  background-color: blueviolet;
-}
-
-.lesgi:hover{
-  background-color:red ;
-}
 
 .circle{
   border: 2px red solid;
@@ -62,3 +59,33 @@
 .circle:hover{
   border: 100%;
 }
+/* .clickbutton{
+  margin-top: 20px;
+  margin-left: 20px;
+  border: none;
+  border-radius: 10px;
+  border: 2px solid gray;
+  text-align: center;
+  box-shadow: 5px 5px 0px 0px; ;
+  
+}
+
+
+
+.lesgo{
+  background-color: blueviolet;
+} */
+/* .lesgo p:hover{
+  color: red;
+  background-color: green;
+  
+} */
+
+.main{
+  width: 80%;
+  margin-left: 10%;
+  border: 2px grey solid;
+  border-radius: 5px;
+
+}
+
