@@ -6,50 +6,81 @@
 import  statrReact,{useState} from 'react';
 
 
-const About =()=>{
-    const [newstyle,morestyle]=useState({
-        width:'80%' ,
-        marginLeft: '10%'      
-    })
+const About =(probps)=>{
+    const [btntext, setbtntext] = useState(initialState){
 
-     const [mystyle, setmystyle] = useState({
 
-        color:'white',
-        backgroundColor:'black'
-    })
-    const [btntext, setbtntext] = useState("enable dark mode")
-
-    const togglecolor=()=>{
-       
-        if( mystyle.color=='white'){
-            setmystyle({
-                color:'black',
-        backgroundColor:'white'
-            })
-            morestyle({
-                width:'100%',
-                marginLeft: '-5%'
-            })
-            setbtntext("enable dark mode")
-        }
-        else{
-           
-                setmystyle({
-                    color:'white',
-            backgroundColor:'black'
-                })
-                morestyle({
-                    width:'80%' ,
-                    marginLeft: '10%'   
-                })
-                setbtntext("enable light mode")
-        
-        }
     }
+
+
+
+    const [mystyle, setmystyle] = useState({
+        color:"whiite",
+        background:"black"
+    })
+
+    const togglecolor =()=>{
+        if(mystyle.color==='white'){
+            setmystyle({
+                            color:'black',
+                    backgroundColor:'white'
+                        })
+                    }
+            else{
+               
+                    setmystyle({
+                                    color:'white',
+                                    backgroundColor:'black'
+                                })
+            }
+        }
+    
+
+
+
+    // const [newstyle,morestyle]=useState({
+    //     width:'80%' ,
+    //     marginLeft: '10%'      
+    // })
+
+    //  const [mystyle, setmystyle] = useState({
+
+    //     color:'white',
+    //     backgroundColor:'black'
+    // })
+    // const [btntext, setbtntext] = useState("enable dark mode")
+
+    // const togglecolor=()=>{
+       
+    //     if( mystyle.color=='white'){
+    //         setmystyle({
+    //             color:'black',
+    //     backgroundColor:'white'
+    //         })
+    //         morestyle({
+    //             width:'100%',
+    //             marginLeft: '-5%'
+    //         })
+    //         setbtntext("enable dark mode")
+    //     }
+    //     else{
+           
+    //             setmystyle({
+    //                 color:'white',
+    //         backgroundColor:'black'
+    //             })
+    //             morestyle({
+    //                 width:'80%' ,
+    //                 marginLeft: '10%'   
+    //             })
+    //             setbtntext("enable light mode")
+        
+    //     }
+    // }
        
      
     return <div>
-        <div className='main' style={newstyle}>
+        <div className='main' >
             <h1 style={mystyle}>About me</h1>
             <div style={mystyle} className='lesgo'>
                 <p style={mystyle} className='text'>
