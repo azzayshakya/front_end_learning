@@ -7,10 +7,7 @@ import  statrReact,{useState} from 'react';
 
 
 const About =(probps)=>{
-    const [btntext, setbtntext] = useState(initialState){
-
-
-    }
+    const [btntext, setbtntext] = useState("enable dark mode")
 
 
 
