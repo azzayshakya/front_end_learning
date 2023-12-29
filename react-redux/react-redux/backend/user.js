@@ -5,3 +5,4 @@ const userschema= new schema({
 
 })
 module.exports=mongoose.model('user',userschema)
+

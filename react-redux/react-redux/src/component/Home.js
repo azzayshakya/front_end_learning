@@ -5,14 +5,14 @@ const Home =()=>{
 
 <div>
     <div className="add-to-cart-wrapper">
-        <img src="https://uxwing.com/wp-content/themes/uxwing/download/e-commerce-currency-shopping/add-to-cart-icon.png" alt="" />
+        <img src="https://uxwing.com/wp-content/themes/uxwing/download/e-commerce-currency-shopping/add-to-cart-icon.png" alt="add-to-cart-img" />
     </div>
 
            
            <h1>Home Component</h1>
            <div className="cart-wrapper">
                <div className="img-wrapper item">
-                   <img src="https://www.freepnglogos.com/uploads/mobile-png/samsung-mobile-png-14.png" />
+                   <img src="https://www.freepnglogos.com/uploads/mobile-png/samsung-mobile-png-14.png"  alt="img-wrapper "/>
                </div>
                <div className="text-wrapper item">
                    <span>
