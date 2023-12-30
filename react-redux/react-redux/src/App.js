@@ -1,15 +1,13 @@
-
+import React from 'react';
 import './App.css';
-import User from './User'
-import Home from './containers/HomeContainer'
-
+import HomeContainer from './containers/HomeContainer'
+import HeaderContainer from './containers/HeaderContainer'
 function App() {
   return (
     <div className="App">
-      {/* <h1>app componenet</h1> */}
-      <User data={{name:"azzay  Shakya",height:"00"}}/>
-      <Home/>
-      
+      <HeaderContainer />
+     
+      <HomeContainer />
     </div>
   );
 }

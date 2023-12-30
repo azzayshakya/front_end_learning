@@ -27,7 +27,52 @@
 .App-link {
   color: #61dafb;
 }
-
+/*  */
+.btn-wrapper button {
+  background-color: red;
+  border: 0px;
+  padding: 10px;
+  border-radius: 4px;
+  color: #fff;
+  box-shadow: #333 0px 1px 5px;
+}
+.img-wrapper img {
+  width: 100px;
+  margin-top: -10px;;
+}
+.cart-wrapper{
+  height: 100px;
+    width: 500px;
+    border: 1px solid #ccc;
+    margin-left: 10%;
+}
+.item {
+  float: left;
+  display: inline-block;
+  width: 120px;
+  padding: 20px;
+  height: 70px;
+}
+.add-to-cart img{
+  width: 80px;
+    position: absolute;
+    right: 1%;
+    top: 1%;
+}
+.cart-count{
+  
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    z-index: 1;
+    background-color: red;
+    padding: 7px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    color: #fff;
+}
+/*  */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,53 +80,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-
-/*  */
-
-.cart-wrapper{
-  border: 2px grey solid;
-  height: 200px;
-}
-
-.img-wrapper{
-  color: 2px red solid;
-  
-  
-}
-
-.img-wrapper img{
-  width: 250px;
-  height: 200px;
-  position: absolute;
-  left: 200px;
-}
-
-.text-wrapper{
-  position: absolute;
-  top: 120px;
-  right: 600px;
-}
-.btn-wrapper{
-  position: absolute;
-  top: 160px;
-  right: 675px;
-}
-
-.btn-wrapper button{
-  background: red;
-  border: 0px;
-  border-radius: 5px;
-  padding: 8px;
-  color: white;
-  cursor: pointer;
-}
-.add-to-cart-wrapper img{
-  width: 50px;
-  position: absolute;
-  right: 2px;
-  cursor: pointer;
-
-
 }
