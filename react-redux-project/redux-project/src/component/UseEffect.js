@@ -12,10 +12,11 @@ const UseEffect =()=>{
      
 
             const result = await response.json()
+            const result2 = await JSON.stringify(result,null,2);
             // console.log(result)
             // const result2 = await JSON.stringify(result,null,2)
-            // console.log(result2)
-            setData(result);
+            console.log(result2)
+            setData(result2);
         }
         catch(error){
             console.log(error)
@@ -34,7 +35,8 @@ const UseEffect =()=>{
    :(
     <div>
         <h1> Here Is Your Data :</h1>
-        <pre>{JSON.stringify(Data,null, 2)}</pre>
+        <pre>{Data}</pre>
+        {/* <p>{Data.id}</p> */}
     
     </div>
    )
