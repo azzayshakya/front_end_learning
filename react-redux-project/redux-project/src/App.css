@@ -36,3 +36,63 @@
     transform: rotate(360deg);
   }
 }
+
+
+/*  */
+
+.main{
+  border: grey 2px solid;
+  min-width:23%;
+  max-width:23%;
+
+
+  height: 400px;
+  margin: 5px;
+ 
+  
+}
+
+
+.main-two{
+  /* border: green 2px solid; */
+}
+.card{
+}
+
+.image{
+  height:250px;
+  text-align: center;
+  /* border: green 2px solid; */
+  width: 99%;
+
+}
+.image img{
+  height: 200px;
+  /* border: green 2px solid; */
+  width: 99%;
+
+}
+
+.header{
+color: black;
+  /* border: green 2px solid; */
+font-size: 20px;
+font-weight:bold;
+margin-top: 8px;
+
+
+}
+
+.price{
+  color: black;
+    /* border: green 2px solid; */
+  font-size: 20px;
+  font-weight:bold;
+  margin-top: 8px;
+  
+
+  }
+
+  .content{
+    margin-left: 6px;
+  }

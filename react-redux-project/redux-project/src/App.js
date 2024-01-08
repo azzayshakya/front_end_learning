@@ -1,7 +1,5 @@
 
 import './App.css';
-import { useSelector,useDispatch } from 'react-redux';
-// import UseEffect from './component/UseEffect';
 
 import {
   BrowserRouter as Router,
@@ -12,18 +10,22 @@ import {
 
 import Header from './component/Header';
 import ProductListing from './component/ProductListing';
+import ProductDetail from './component/ProductDetail';
+// import ProductComponent from './component/ProductComponent';
 
 function App() {
-  const dispatch=useDispatch()
-  const products=useSelector(state=>state)
-  console.log(products)
+
 
   return (
-    <div className="App">
+    <div className="" style={{marginLeft:"50px"}}>
+
     <Header/>
+
       <Router>
         <Routes>
         <Route exact path ="/" element={<ProductListing/>}/>
+        <Route exact path='/product/:productId' element={<ProductDetail/>}/>
+        <Route>404 Not Found!</Route><Route />
         
         </Routes>
       </Router>  
