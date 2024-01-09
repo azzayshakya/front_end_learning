@@ -13,8 +13,15 @@ export const productReducer =(state=initialestate,{type,payload} )=>{
         default:
             return state
     }
-
-   
-
-
 }
+
+export const SelectedProductReducer =(state={},{type,payload} )=>{
+
+    switch (type) {
+        case ActionTypes.SELECTED_PRODUCTS:
+           return {...state , ...payload} 
+        default:
+            return state
+    }
+}
+
