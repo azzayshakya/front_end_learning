@@ -1,0 +1,50 @@
+.banner{
+    margin-left: 100px;
+}
+.BannerAbout .Find-your-job{
+    font-size: 40px;
+    margin-top: 50px;
+   font-weight: 500;
+}
+.BannerAbout .Banner-Tag-line{
+    font-size: 20px;
+    font-weight: 400;
+} 
+.inputFeild{
+    display: flex;
+    margin-top: 50px;
+}
+.inputFeild input{
+    height: 30px;
+    border: 1px grey solid; 
+}
+.firstInputField input{
+    width: 400px;
+    border-top-left-radius: 5px;
+    border-end-start-radius: 5px;
+    padding-left: 30px;
+    font-size: 15px;
+}
+.SecoundInputField input{
+    width: 320px;
+    padding-left: 30px;
+    font-size: 15px;
+}
+
+.searchInBanner button{
+    width:80px;
+    height: 30px;
+    border: 1px grey solid; 
+    border-top-right-radius:5px ;
+    border-bottom-right-radius: 5px;
+    background-color:#3575E2;
+    color: aliceblue;
+    font-size: 15px;
+    cursor: pointer;
+}
+.icons{
+   position: absolute;
+   font-size: 20px;
+   margin-left: 5px;
+   margin-top: 3px;
+}

@@ -2,6 +2,8 @@ import {React, useState} from 'react'
 import {} from '../Css/Navbar.css'
 import { FaBars } from "react-icons/fa6";
 import { ImCross } from "react-icons/im";
+import { GiCrossFlare } from "react-icons/gi";
+import { Link } from 'react-router-dom';
 
 const Navbar=()=>{
     const [IsOpen,setIsOpen]=useState(false);
@@ -12,8 +14,8 @@ const Navbar=()=>{
     <div className='Header'>
 
         <div className="logoSide a">
-            <div className="companyIcon zx">
-                a
+            <div className="companyIcon active zx">
+               <GiCrossFlare/>
             </div>
             <div className="companyName zx">
                 ZOBS
@@ -31,11 +33,11 @@ const Navbar=()=>{
 
         <div className="buttonside a">
             <div className="loginButton">
-                <button>Log In</button>
+                <button><Link className='LinkTag' to="">Log In</Link></button>
 
             </div>
             <div className="logoutButton">
-                <button>Log Out</button>
+                <button><Link className='LinkTag' to="">Log Out</Link></button>
             </div>
         </div>
 
@@ -70,18 +72,15 @@ const Navbar=()=>{
 
             <div className="buttonsideMobile a">
               <div className="loginButtonMobile">
-                <button>Log In</button>
+              <button><Link className='LinkTag active' to="">Log in</Link></button>
+
               </div>
               <div className="logoutButtonMobile">
-                <button>Log Out</button>
+              <button><Link to="" className='LinkTag'>Log out</Link></button>
               </div>
             </div>
           </div>
         )}
-
-        
-
-    
     </>)
 }
 export default Navbar;
