@@ -10,6 +10,8 @@ const Navbar=()=>{
     const toggleButton=()=>{
         setIsOpen(!IsOpen);
     }
+
+   
     return (<>
     <div className='Header'>
 
@@ -24,9 +26,9 @@ const Navbar=()=>{
 
         <div className="navbarMid a">
             <ul>
-                <li className="navbarNames active">Search</li>
+                <li className="navbarNames active">azay</li>
                 <li className="navbarNames">My Jobs</li>
-                <li className="navbarNames">Salary Estimate</li>
+                <li className="navbarNames">azay</li>
                 <li className="navbarNames">Post A Job</li>
             </ul>
         </div>
@@ -34,10 +36,10 @@ const Navbar=()=>{
         <div className="buttonside a">
             <div className="loginButton">
                 <button><Link className='LinkTag' to="">Log In</Link></button>
-
             </div>
+
             <div className="logoutButton">
-                <button><Link className='LinkTag' to="">Log Out</Link></button>
+                <button><Link className='LinkTag' to="">Sign Up</Link></button>
             </div>
         </div>
 
@@ -47,25 +49,20 @@ const Navbar=()=>{
             {
                 IsOpen ? <ImCross/>:<FaBars/>
             }
-
             </button>
 
         </div>
-
         </div>
 
         
-
-
-        {/* for mobile */}
         {/* for mobile */}
         {IsOpen && (
           <div className="headerMobile">
             <div className="navbarMidMobile a">
               <ul>
-              <li className="navbarNames active">Search</li>
+              <li className="navbarNames active">azay</li>
                 <li className="navbarNames">My Jobs</li>
-                <li className="navbarNames">Salary Estimate</li>
+                <li className="navbarNames">azay</li>
                 <li className="navbarNames">Post A Job</li>
               </ul>
             </div>
@@ -76,7 +73,7 @@ const Navbar=()=>{
 
               </div>
               <div className="logoutButtonMobile">
-              <button><Link to="" className='LinkTag'>Log out</Link></button>
+              <button><Link to="" className='LinkTag'>Sign Up</Link></button>
               </div>
             </div>
           </div>

@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CiLocationOn } from "react-icons/ci";
 import { CiSearch } from "react-icons/ci";
 import {} from '../Css/Banner.css' 
-const Banner = () => {
+const Banner = ({query,handleSearch}) => {
+
+    
+    
     return <div>
        <div className="banner">
         <div className="BannerAbout">            
@@ -16,14 +19,14 @@ const Banner = () => {
                 < CiLocationOn/>
             </div>
                
-            <input type="text" placeholder='Search Type Of Job' />
+            <input type="text" placeholder='Search Type Of Job' value={query} onChange={handleSearch} />
 
             </div>
             <div className="SecoundInputField">
             <div className='icons'>
                 <CiSearch/>
             </div>
-            <input type="text" placeholder='Location' />
+            <input type="text" placeholder='Location'/>
             </div>
             <div className="searchInBanner">
                 <button>Search</button>

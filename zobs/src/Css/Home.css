@@ -1,0 +1,37 @@
+.mainContainerHome{
+    /* border: 2px red solid; */
+    display: flex;
+    margin-top: 100px;
+    
+    background-color: rgb(247, 246, 246);
+}
+.leftHome{
+    /* border: 2px red solid; */
+    min-height: 100px;
+    width: 25%;
+margin-left: 100px;
+margin-top: 60px;
+    background-color: white;
+}
+.midContainer{
+    /* border: 2px red solid; */
+    min-height: 100px;
+    width: 40%;
+    margin-left: 25px;
+    margin-right:25px ;
+margin-top: 60px;
+
+ 
+    background-color: white;
+
+}
+.rightHome{
+    /* border: 2px red solid; */
+    min-height:  100px;
+    width: 20%;
+    margin-right: 100px;
+margin-top: 60px;
+
+    background-color: white;
+
+}

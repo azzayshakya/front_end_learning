@@ -48,3 +48,35 @@
    margin-left: 5px;
    margin-top: 3px;
 }
+
+@media(max-width:768px){
+    .inputFeild{
+        display: flex;
+        flex-direction: column;
+    }
+    .firstInputField input{
+        width: 250px;
+        border-radius: 5px;
+        padding-left: 30px;
+        font-size: 13px;
+    }
+    .SecoundInputField input{
+        width: 250px;
+        padding-left: 30px;
+        font-size: 13px;
+        border-radius: 5px;
+    }
+    
+    .searchInBanner button{
+        width:80px;
+        height: 30px;
+        border: 1px grey solid; 
+        border-radius: 5px;
+        background-color:#3575E2;
+        color: aliceblue;
+        font-size: 15px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+}
