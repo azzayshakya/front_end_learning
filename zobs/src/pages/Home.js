@@ -4,6 +4,7 @@ import Banner from '../component/Banner';
 import {} from '../Css/Home.css'
 import Card from '../component/Card';
 import Jobs from './Jobs';
+import SideBar from '../SideBar/SideBar';
 
 const Home =()=>{
 
@@ -14,14 +15,14 @@ const Home =()=>{
     }
 
 
-       // for the home page
-    const [loading,setloading]=useState(false);
+    // for the home page
+
     const[selectedCategory,setselectedCategory] =useState();
     const [jobs,setjobs]=useState([]);
 
     const fetchjobdata=async()=>{
         try{
-            setloading(true)
+
             const response=await fetch("jobs.json")
             const jobdata=  await response.json();
             setjobs(jobdata);
@@ -32,7 +33,6 @@ const Home =()=>{
 
         }
         finally{
-            setloading(false)
         }
 
     }
@@ -89,13 +89,13 @@ const Home =()=>{
         <div className='mainContainerHome'>
 
             <div className="leftHome">
-                left
+               {/* <SideBar handleChange={handleChange} handleClick={handleClick}/> */}
             </div>
             <div className="midContainer">
             <Jobs result={result}/>
             </div>
             <div className="rightHome">
-                right
+                {/* right */}
             </div>
 
          

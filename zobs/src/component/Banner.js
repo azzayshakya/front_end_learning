@@ -22,12 +22,14 @@ const Banner = ({query,handleSearch}) => {
             <input type="text" placeholder='Search Type Of Job' value={query} onChange={handleSearch} />
 
             </div>
+            {/* 
             <div className="SecoundInputField">
             <div className='icons'>
                 <CiSearch/>
             </div>
             <input type="text" placeholder='Location'/>
-            </div>
+            </div> 
+            */}
             <div className="searchInBanner">
                 <button>Search</button>
             </div>

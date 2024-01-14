@@ -29,7 +29,7 @@ const Navbar=()=>{
                 <li className="navbarNames active">azay</li>
                 <li className="navbarNames">My Jobs</li>
                 <li className="navbarNames">azay</li>
-                <li className="navbarNames">Post A Job</li>
+                <li className="navbarNames"><Link to={"/PostAJob"}>Post A Job</Link></li>
             </ul>
         </div>
 
