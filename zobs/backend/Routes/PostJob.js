@@ -1,4 +1,46 @@
-const express =require('express')
+const express = require('express');
 const router = express.Router();
-import {PostJob}  from "../model/PostJob" 
-// router.post("/PostJob" , )
+const AllJobs =require("../model/PostJob")
+
+router.post('/PostJob', async (req, res) => {
+  console.log("hey ajay")
+  try {
+    const {
+      companyName,
+      jobTitle,
+      minPrice,
+      maxPrice,
+      salaryType,
+      jobLocation,
+      postingDate,
+      experienceLevel,
+      employmentType,
+      companyLogo,
+      description,
+    } = req.body;
+
+    
+    await AllJobs.create({
+      companyName,
+      jobTitle,
+      minPrice,
+      maxPrice,
+      salaryType,
+      jobLocation,
+      postingDate,
+      experienceLevel,
+      employmentType,
+      companyLogo,
+      description,
+    });
+
+    
+    res.status(200).json({ success: true, message: 'Job posted successfully' });
+  } catch (error) {
+    console.error(error);
+   
+    res.status(500).json({ success: false, message: 'Internal Server Error' });
+  }
+});
+
+module.exports = router;
