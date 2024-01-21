@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import Navbar from '../component/Navbar'
 import {} from '../Css/PostJob.css'
+import { Navigate } from 'react-router-dom';
 const PostJob = () => {
     const [credentials,setcredentials]= useState({companyName:"",jobTitle:"",minPrice:"",maxPrice:"",salaryType:"",jobLocation:"",postingDate:"",experienceLevel:"",employmentType:"",companyLogo:"",description:""})
 
     const HandleSubmit=async(event)=>{
         event.preventDefault();
-        console.log(JSON.stringify(credentials))
-        console.log("babes")
-        
+        console.log(JSON.stringify(credentials))       
         const response=await fetch("http://localhost:5000/PostJob",{
             method: 'POST',
             headers: {
@@ -21,7 +20,11 @@ const PostJob = () => {
         console.log(json)
         if (!json.success) {
             alert("enter valid details")
-          }
+        }
+        if (json.success) {
+            alert("Job posted successfully")
+            // Navigate("/")
+        }
 
     }
 
@@ -64,81 +67,81 @@ const PostJob = () => {
             {/* <input type="text" placeholder='company name' name='salaryType' value={credentials.salaryType} onChange={handleNameChange} /> */}
 
 
-            <div className="PostRow">
+            <div className="PostRowRadioUpper">
             <div>
-    <p>Salary Type</p>
-    <input
-        type="radio"
-        id="html"
-        name="salaryType"
-        value="HTML"
-        checked={credentials.salaryType === "HTML"}
-        onChange={handleRadioChange}
-    />
-    <label htmlFor="html">HTML</label><br />
+                <p>Salary Type</p>
+                <div className="PostRowRadio">
 
-    <input
-        type="radio"
-        id="css"
-        name="salaryType"
-        value="CSS"
-        checked={credentials.salaryType === "CSS"}
-        onChange={handleRadioChange}
-    />
-    <label htmlFor="css">CSS</label><br />
+                <input
+                    type="radio"
+                    id="Yearly"
+                    name="salaryType"
+                    value="Yearly"
+                    checked={credentials.salaryType === "Yearly"}
+                    onChange={handleRadioChange}
+                />
+                <label htmlFor="html">Yearly</label><br />
+            
+                <input
+                    type="radio"
+                    id="Monthly"
+                    name="salaryType"
+                    value="Monthly"
+                    checked={credentials.salaryType === "Monthly"}
+                    onChange={handleRadioChange}
+                />
+                <label htmlFor="css">Monthly</label>
 
-    <input
-        type="radio"
-        id="javascript"
-        name="salaryType"
-        value="JavaScript"
-        checked={credentials.salaryType === "JavaScript"}
-        onChange={handleRadioChange}
-    />
-    <label htmlFor="javascript">JavaScript</label>
-</div>
-                <div>
+                </div>
+
+            </div>
+
+                <div className='jobLocationRow'>
                     <p>Job Location</p>   
                     <input type="text" placeholder='jobTitle' name='jobLocation' value={credentials.jobLocation} onChange={handleNameChange}/>
                 </div>
             </div>
 
-            <div className="PostRow">
-                <div>
-                    <p>Posting Date</p>                   
+            <div className="PostRowRadioUpper">
+                <div className='jobLocationRow'>
+                    <p>Posting Date</p>                  
                     <input type="date" placeholder='Posting Date' name='postingDate' value={credentials.postingDate} onChange={handleNameChange}/>
                 </div>
                 <div>
-                    <p>Experience Level</p>   
-                    <input
-        type="radio"
-        id="html"
-        name="experienceLevel"
-        value="HTML"
-        checked={credentials.experienceLevel === "HTML"}
-        onChange={handleRadioChange}
-    />
-    <label htmlFor="html">HTML</label><br />
+                    <p>Experience Level</p>
 
-    <input
-        type="radio"
-        id="css"
-        name="experienceLevel"
-        value="CSS"
-        checked={credentials.experienceLevel === "CSS"}
-        onChange={handleRadioChange}
-    />
-    <label htmlFor="css">CSS</label><br />
+                    <div className='PostRowRadio'> 
+                        <input
+                            type="radio"
+                            id="Fresher"
+                            name="experienceLevel"
+                            value="Fresher"
+                            checked={credentials.experienceLevel === "Fresher"}
+                            onChange={handleRadioChange}
+                            />
+                            <label htmlFor="html">Fresher</label><br />
 
-    <input
-        type="radio"
-        id="javascript"
-        name="experienceLevel"
-        value="JavaScript"
-        checked={credentials.experienceLevel === "JavaScript"}
-        onChange={handleRadioChange}
-    />
-    <label htmlFor="javascript">JavaScript</label>
+                            <input
+                            type="radio"
+                            id="Internship"
+                            name="experienceLevel"
+                            value="Internship"
+                            checked={credentials.experienceLevel === "Internship"}
+                            onChange={handleRadioChange}
+                            />
+                            <label htmlFor="css">Internship</label><br />
+
+                            <input
+                            type="radio"
+                            id="WorkedForaCompany"
+                            name="experienceLevel"
+                            value="WorkedForaCompany"
+                            checked={credentials.experienceLevel === "Worked For a Company"}
+                            onChange={handleRadioChange}
+                            />
+                            <label htmlFor="javascript">Worked For A Company</label>
+                    </div>
+                    
                 </div>
             </div>
             <div className="PostRow">
@@ -154,8 +157,8 @@ const PostJob = () => {
             </div>
 
             <div className="descriptionPostJov">
-                <p>Description</p>
-                <textarea name="Description" id="" cols="70" rows="8" placeholder='description' value={credentials.description} onChange={handleNameChange} ></textarea>
+                <p>Description (Max-20 Words)</p>
+                <textarea name="description" id="" cols="70" rows="8" placeholder='Description' value={credentials.description} onChange={handleNameChange} ></textarea>
             </div>
 
             <div className="SubmitButton" onClick={HandleSubmit}>
@@ -167,7 +170,7 @@ const PostJob = () => {
         
         </div>
 
-    </div>;
+    </div>
 }
 
 

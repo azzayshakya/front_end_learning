@@ -3,7 +3,6 @@ const router = express.Router();
 const AllJobs =require("../model/PostJob")
 
 router.post('/PostJob', async (req, res) => {
-  console.log("hey ajay")
   try {
     const {
       companyName,
@@ -35,7 +34,7 @@ router.post('/PostJob', async (req, res) => {
     });
 
     
-    res.status(200).json({ success: true, message: 'Job posted successfully' });
+    res.status(200).json({ success: true, message: 'Job posted successfully'});
   } catch (error) {
     console.error(error);
    

@@ -6,12 +6,14 @@ import { GiCrossFlare } from "react-icons/gi";
 import { Link } from 'react-router-dom';
 
 const Navbar=()=>{
+
     const [IsOpen,setIsOpen]=useState(false);
     const toggleButton=()=>{
         setIsOpen(!IsOpen);
     }
 
-   
+
+    
     return (<>
     <div className='Header'>
 
@@ -35,11 +37,11 @@ const Navbar=()=>{
 
         <div className="buttonside a">
             <div className="loginButton">
-                <button><Link className='LinkTag' to="">Log In</Link></button>
+                <button><Link className='LinkTag' to="/LogIn">Log In</Link></button>
             </div>
 
             <div className="logoutButton">
-                <button><Link className='LinkTag' to="">Sign Up</Link></button>
+                <button><Link className='LinkTag' to="/SignUp">Sign Up</Link></button>
             </div>
         </div>
 
@@ -54,7 +56,6 @@ const Navbar=()=>{
         </div>
         </div>
 
-        
         {/* for mobile */}
         {IsOpen && (
           <div className="headerMobile">
@@ -69,11 +70,11 @@ const Navbar=()=>{
 
             <div className="buttonsideMobile a">
               <div className="loginButtonMobile">
-              <button><Link className='LinkTag active' to="">Log in</Link></button>
+              <button><Link className='LinkTag active' to="/LogIn">Log in</Link></button>
 
               </div>
               <div className="logoutButtonMobile">
-              <button><Link to="" className='LinkTag'>Sign Up</Link></button>
+              <button><Link to="/SignUp" className='LinkTag'>Sign Up</Link></button>
               </div>
             </div>
           </div>
