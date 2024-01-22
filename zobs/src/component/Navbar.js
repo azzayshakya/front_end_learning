@@ -28,10 +28,11 @@ const Navbar=()=>{
 
         <div className="navbarMid a">
             <ul>
-                <li className="navbarNames active">azay</li>
+                
+                <li className="navbarNames active"><Link className='LinkTAG LinkTAGHome active' to={"/"}>Home</Link></li>
                 <li className="navbarNames">My Jobs</li>
                 <li className="navbarNames">azay</li>
-                <li className="navbarNames"><Link to={"/PostAJob"}>Post A Job</Link></li>
+                <li className="navbarNames"><Link className='LinkTAG' to={"/PostAJob"}>Post A Job</Link></li>
             </ul>
         </div>
 

@@ -42,7 +42,6 @@ const PostJob = () => {
             <Navbar/>
         </div>
         <div className="upperPostJob">
-        
         <div className='PostJobMain'>
             <div className="PostRow">
                 <div>
