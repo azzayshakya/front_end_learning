@@ -12,6 +12,8 @@ app.get("/",(req,res)=>{
 app.use(express.json());
 app.use(require("./Routes/PostJob"));
 app.use(require("./Routes/SignUpRoute"))
+app.use(require("./Routes/LoginUserRoute"))
+
 
 app.listen(port, () => {
     console.log(`App is running at http://localhost:${port}`);

@@ -7,10 +7,34 @@ import { GiCrossFlare } from "react-icons/gi";
 
 
 const Login=()=>{
-    const [credentials,setcredentials]=useState();
-    const HandleNamechange=()=>{
+    const [credentials,setcredentials]=useState({email:"" ,password:""});
+    const handleSubmit=async(event)=>{
+    console.log(JSON.stringify({email:credentials.email,password:credentials.password}))
 
+        event.preventDefault();
+        const response=await fetch("http://localhost:5000/LogIn",{        
+            method:"POST",
+            headers:{
+                'Content-Type':'application/json'     
+            },
+            body:JSON.stringify({email:credentials.email,password:credentials.password})
+
+        })
+        
+        const json=await response.json();
+        console.log(json);
+
+        if(!json.success){
+            alert("wrong information you are providing")
+        }
+        if(json.success){
+            alert("login successfully")
+        }
     }
+    const HandleNamechange=(event)=>{
+        setcredentials({...credentials,[event.target.name]:event.target.value})
+    }
+
     return<>
     <div className="loginpage">
         <div>
@@ -41,16 +65,17 @@ const Login=()=>{
 
                 <div className="asdf">
                     <div className="formIcon"><Mail/></div>
-                    <input type="email" name="" id="" placeholder="Your Email"/>
+                    <input type="email" name="email" value={credentials.email} onChange={HandleNamechange}  id="emailInput" placeholder="Your Email"/>
                 </div>
 
                 <div className="asdf"> 
-                <div className="formIcon"><Lock/></div>         
-                    <input type="password" name="" id="" placeholder="Password"/>
+                <div className="formIcon"><Lock/></div>    
+                        <input type="password" name="password" value={credentials.password} onChange={HandleNamechange} placeholder="Password"/>     
+                    {/* <input type="password" name="password" value={credentials.password} onChange={HandleNamechange} id="passwordInput" placeholder="Password"/> */}
                 </div> 
 
                 <div className="FormButton">
-                    <button>Submit</button>
+                    <button onClick={handleSubmit}>Submit</button>
                 </div>
 
             </div>

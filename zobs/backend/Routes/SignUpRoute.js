@@ -6,19 +6,25 @@ router.post("/SignUp",async(req,res)=>{
 
     try{
         const {
-            name
+            name,
+            email,
+            mobileNumber,
+            password
         } = req.body;
 
         await users.create({
-            name
+            name,
+            email,
+            mobileNumber,
+            password
         }
         )
-        res.status(201).json({status:sucess,message:"sign up successfully"})
+        res.status(201).json({success:true,message:"sign up successfully"})
 
     }
     catch(error){
         console.log("SignUp route error",error)
-        res.status(500).json({sucess:false,message:"SignUp route error"})
+        res.status(500).json({success:false,message:"SignUp route error"})
     }
 
 })
