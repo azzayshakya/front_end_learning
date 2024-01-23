@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import PostJob from './pages/PostJob';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import MyCreatedJobs from './pages/MyCreatedJobs';
+
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route exact path='PostAJob' element={<PostJob/>}/>
           <Route exact path='LogIn' element={<Login/>}/>
           <Route exact path='SignUp' element={<SignUp/>}/>
+          <Route exact path='MyCreatedJobs' element={<MyCreatedJobs/>}/>
+
         </Routes>
       </Router>
   );

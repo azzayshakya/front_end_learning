@@ -11,6 +11,9 @@ const Navbar=()=>{
     const toggleButton=()=>{
         setIsOpen(!IsOpen);
     }
+    const handleLogout=()=>{
+        localStorage.removeItem("authToken")
+    }
 
 
     
@@ -28,23 +31,49 @@ const Navbar=()=>{
 
         <div className="navbarMid a">
             <ul>
-                
                 <li className="navbarNames active"><Link className='LinkTAG LinkTAGHome active' to={"/"}>Home</Link></li>
-                <li className="navbarNames">My Jobs</li>
+                <li className="navbarNames"><Link className='LinkTAG' to={"/MyCreatedJobs"}>My Jobs</Link></li>
                 <li className="navbarNames">azay</li>
                 <li className="navbarNames"><Link className='LinkTAG' to={"/PostAJob"}>Post A Job</Link></li>
             </ul>
         </div>
 
+        {(localStorage.getItem("authToken")) ?
         <div className="buttonside a">
-            <div className="loginButton">
-                <button><Link className='LinkTag' to="/LogIn">Log In</Link></button>
-            </div>
+        
 
-            <div className="logoutButton">
-                <button><Link className='LinkTag' to="/SignUp">Sign Up</Link></button>
-            </div>
+        <div className="loginButton">
+            <button onClick={handleLogout}><Link className='LinkTag' to="/LogIn">Log Out</Link></button>
         </div>
+
+    
+        </div>
+
+       
+        
+        :
+
+        <div className="buttonside a">
+        
+
+        <div className="loginButton">
+            <button><Link className='LinkTag' to="/LogIn">Log In</Link></button>
+        </div>
+
+        <div className="logoutButton">
+            <button><Link className='LinkTag' to="/SignUp">Sign Up</Link></button>
+        </div>
+    </div>
+        
+        }
+
+<div>
+            
+        </div>
+
+        
+
+        
 
         <div className="toggleButton">
 
