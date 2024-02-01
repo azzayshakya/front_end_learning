@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const AllJobs =require("../model/PostJob")
+const allJobs =require("../model/PostJob")
 
 router.post('/PostJob', async (req, res) => {
   try {
@@ -19,7 +19,7 @@ router.post('/PostJob', async (req, res) => {
     } = req.body;
 
     
-    await AllJobs.create({
+    await allJobs.create({
       companyName,
       jobTitle,
       minPrice,

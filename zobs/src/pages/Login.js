@@ -4,10 +4,12 @@ import {} from '../Css/Login.css'
 import { Lock } from 'lucide-react';
 import { Mail } from 'lucide-react';
 import { GiCrossFlare } from "react-icons/gi";
+import { useNavigate } from "react-router-dom";
 
 
 const Login=()=>{
     const [credentials,setcredentials]=useState({email:"" ,password:""});
+    const Navigate=useNavigate();
     const handleSubmit=async(event)=>{
     console.log(JSON.stringify({email:credentials.email,password:credentials.password}))
 
@@ -28,7 +30,18 @@ const Login=()=>{
             alert("wrong information you are providing")
         }
         if(json.success){
+
+            localStorage.setItem("authToken",json.authToken)
+            localStorage.setItem("userEmail",credentials.email)
+            // console.log("userEmial",email)
+
+            console.log(localStorage.getItem("userEmail"))
+
+            console.log(localStorage.getItem("authToken"))
+        
             alert("login successfully")
+
+            Navigate("/")
         }
     }
     const HandleNamechange=(event)=>{

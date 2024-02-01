@@ -6,10 +6,12 @@ import { Mail } from 'lucide-react';
 import { GiCrossFlare } from "react-icons/gi";
 import { User } from 'lucide-react';
 import { Contact } from 'lucide-react';
+import { useNavigate } from "react-router-dom";
 
 const SignUp=()=>{
 
     const [credentials,setcredentials]=useState({name:"" ,email:"",mobileNumber:"",password:""});
+    const Navigate= useNavigate();
 
     const handleSubmit=async(event)=>{
         event.preventDefault();
@@ -27,6 +29,8 @@ const SignUp=()=>{
         }
         if(json.success){
             alert("signup successfully")
+            Navigate("/LogIn")
+            
         }
     }
     

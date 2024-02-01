@@ -5,7 +5,6 @@ const bcrypt = require('bcrypt');
 
 const jwt = require("jsonwebtoken")
 const jwtSecret = "mynameisajayshakyaIamFrommyownw"
-const jwtSecret2 = "mynameisajayshakyaIam"
 
 router.post('/LogIn', async (req, res) => {
     try {
@@ -14,7 +13,7 @@ router.post('/LogIn', async (req, res) => {
         try {
            
             const user = await users.findOne({ email });
-            console.log(user)
+            // console.log(user)
 
             if (!user) {
                 return res.status(500).json({ success: false, message: 'User not found' });
@@ -28,10 +27,10 @@ router.post('/LogIn', async (req, res) => {
             const jwtdata={
                     id:user.id   
             }           
-            const authToken= jwt.sign(jwtdata,jwtSecret)
+            const authToken= jwt.sign(jwtdata,jwtSecret);
 
-
-            return res.status(201).json({ success: true, message: 'Login successfully' });
+            
+            return res.status(201).json({ success: true, message: 'Login successfully',authToken:authToken });
 
         } catch (error) {
             console.error(error);

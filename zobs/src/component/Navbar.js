@@ -3,16 +3,22 @@ import {} from '../Css/Navbar.css'
 import { FaBars } from "react-icons/fa6";
 import { ImCross } from "react-icons/im";
 import { GiCrossFlare } from "react-icons/gi";
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 const Navbar=()=>{
 
     const [IsOpen,setIsOpen]=useState(false);
+    const Navigate =useNavigate();
+    
     const toggleButton=()=>{
         setIsOpen(!IsOpen);
     }
     const handleLogout=()=>{
-        localStorage.removeItem("authToken")
+        console.log("before logout",localStorage.getItem("authToken") )
+
+        localStorage.removeItem("authToken");
+        console.log("succesfully logout",localStorage.getItem("authToken") )
+        Navigate("LogIn")
     }
 
 
@@ -40,17 +46,12 @@ const Navbar=()=>{
 
         {(localStorage.getItem("authToken")) ?
         <div className="buttonside a">
-        
-
+    
         <div className="loginButton">
             <button onClick={handleLogout}><Link className='LinkTag' to="/LogIn">Log Out</Link></button>
         </div>
-
-    
         </div>
 
-       
-        
         :
 
         <div className="buttonside a">
