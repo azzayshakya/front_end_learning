@@ -80,13 +80,19 @@ const Home =()=>{
  
  
     return <>
-    <div>
+    <div className='homeMain'>
+        
+
+        
         <div>
             <Navbar/>
             <Banner query={query} handleSearch={handleSearch}/>
         </div>
         {/* main */}
-        <div className='mainContainerHome'>
+    
+    </div>
+
+    <div className='mainContainerHome'>
 
             <div className="leftHome">
                {/* <SideBar handleChange={handleChange} handleClick={handleClick}/> */}
@@ -101,8 +107,6 @@ const Home =()=>{
          
            
         </div>
-    
-    </div>
    
     </>
 }

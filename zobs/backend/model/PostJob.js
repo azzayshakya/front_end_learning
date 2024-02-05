@@ -4,6 +4,10 @@ const mongoose = require('mongoose')
 const {Schema} = mongoose;
 
 const PostJobSchema= new Schema({
+    email:{
+        type:String
+    }
+    ,
     companyName:{
         type: String,
         // required: true,

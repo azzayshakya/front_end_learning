@@ -6,7 +6,8 @@ import PostJob from './pages/PostJob';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import MyCreatedJobs from './pages/MyCreatedJobs';
-
+import UpdatePage from './component/UpdatePage';
+import Ajay from './pages/ajay';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
           <Route exact path='LogIn' element={<Login/>}/>
           <Route exact path='SignUp' element={<SignUp/>}/>
           <Route exact path='MyCreatedJobs' element={<MyCreatedJobs/>}/>
+          <Route exact path='/UpdatePage' element={<UpdatePage/>}/>
+          <Route exact path='/ajay' element={<Ajay/>}/>
+
 
         </Routes>
       </Router>

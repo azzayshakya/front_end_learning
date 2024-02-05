@@ -1,3 +1,28 @@
+.card-container {
+    overflow-y: auto;
+    max-height: 600px; 
+    
+    padding-right: 20px; 
+    
+
+}
+.card-container {
+
+    scrollbar-width:20px;
+    scrollbar-color: black  rgba( 255, 255, 255, 0.25 ); 
+}
+.card-container::-webkit-scrollbar-thumb{
+    background-color: blue; 
+    border-radius: 10px;
+}
+.card-container::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar handle */
+    border-radius: 52px;
+    /* border: 2px red solid; */
+}
+
+
+
 .card{
     margin-top: 20px;
     height: 200px;
@@ -5,6 +30,11 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    border-radius: 52px;
+background: rgba( 255, 255, 255, 0.25 );
+backdrop-filter:blur(10px) ;
+
+/* border: 2px blue solid; */
 }
 
 .CardImg{
@@ -12,13 +42,15 @@
     /* height: 100%; */
     width: 100px;
     height: 100px;
+    margin-top: 10px;
 
 
 }
 .CardImg img{
     /* border: 2px green solid; */
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 10px;
+    
 }
 .card .rightPartOfCard {
     /* border: 2px yellow solid;     */
@@ -28,7 +60,8 @@
     top: -110px;
     left: 110px;
     font-weight:400;
-    color: rgb(88, 87, 87);
+    /* color: rgb(88, 87, 87); */
+
 }
 .card .rightPartOfCard h3{
     position: relative;
@@ -43,6 +76,7 @@
     left: 100px;
     font-size: 15px;
     color: rgb(88, 87, 87);
+    /* color: white; */
     
 
     /* border: 2px yellow solid; */
@@ -62,6 +96,7 @@
     font-size: 14px;
     /* font-weight: 500; */
     color: rgb(88, 87, 87);
+    color: black;
 
 
 }

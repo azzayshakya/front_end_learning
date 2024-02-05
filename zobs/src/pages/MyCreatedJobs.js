@@ -1,61 +1,70 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../component/Navbar";
-const MyCreatedJobs =()=>{
+import SingleCreatedJob from "../component/SingleCreaedJob";
+import UpdatePage from "../component/UpdatePage";
 
-    const [loading,setloading]=useState(true);
-    const [data,setdata]=useState([])
-    const getData=async(req,res)=>{
+const MyCreatedJobs = () => {
+    const [loading, setLoading] = useState(true);
+    const [data, setData] = useState([]);
+
+    const getData = async () => {
         try {
-            setloading(true)
-            const response=await fetch("http://localhost:5000/MyCreatedJobs",{
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json'                
-            },
-            body:JSON.stringify({
-                email:localStorage.getItem("userEmail")
-            })
-        })
-        const data= response.json.stringify();
-            
+            setLoading(true);
+            const response = await fetch("http://localhost:5000/MyCreatedJobs", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: localStorage.getItem("userEmail")
+                })
+            });
+            const jsonData = await response.json();
+            setData(jsonData.postedJobs);
+            console.log("jobdata",jsonData)
+
+
+
         } catch (error) {
-            
-        }
-        finally{
-            setloading(false);
-        }
-        
-    }    
 
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-    useEffect(()=>{
+    useEffect(() => {
         getData();
-    },[])
-   
+    }, []);
 
-
-
-    return <>
-    <div>
-
+    return (
         <div>
-            <Navbar/>
+            <Navbar />
+            <div>
+                {loading ? (
+                    <h1>Data is loading</h1>
+                ) : (
+                    <div>
+                        {data && data.length > 0 ? (
+                            <div>
+                                {data.map((job, index) => (
+                                    <div key={job._id}>
+                                       
+                                        <SingleCreatedJob job={job} />   
+                                        {/* <UpdatePage UpdateJob={job}/>  */}
+
+                                                                         
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <h2>No jobs found</h2>
+                        )}
+                    </div>
+                )}
+            </div>
         </div>
+    );
+};
 
-        <div>
-           {
-            loading ?(
-                <h1>data is loading</h1>
-            ):(
-                <div>
-
-                </div>
-            )
-           }
-
-
-        </div>
-    </div>
-    </>
-}
 export default MyCreatedJobs;

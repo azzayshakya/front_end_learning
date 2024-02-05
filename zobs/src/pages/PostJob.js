@@ -3,9 +3,11 @@ import Navbar from '../component/Navbar'
 import {} from '../Css/PostJob.css'
 import { Navigate } from 'react-router-dom';
 const PostJob = () => {
-    const [credentials,setcredentials]= useState({companyName:"",jobTitle:"",minPrice:"",maxPrice:"",salaryType:"",jobLocation:"",postingDate:"",experienceLevel:"",employmentType:"",companyLogo:"",description:""})
-
+    const [credentials,setcredentials]= useState({ email: localStorage.getItem("userEmail"),companyName:"",jobTitle:"",minPrice:"",maxPrice:"",salaryType:"",jobLocation:"",postingDate:"",experienceLevel:"",employmentType:"",companyLogo:"",description:""})
+    console.log(localStorage.getItem("userEmail"))
+    console.log("fuck you")
     const HandleSubmit=async(event)=>{
+        
         event.preventDefault();
         console.log(JSON.stringify(credentials))       
         const response=await fetch("http://localhost:5000/PostJob",{
@@ -13,7 +15,8 @@ const PostJob = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body:JSON.stringify({companyName:credentials.companyName,jobTitle:credentials.jobTitle,minPrice:credentials.minPrice,maxPrice:credentials.maxPrice,salaryType:credentials.salaryType,jobLocation:credentials.jobLocation,postingDate:credentials.postingDate,experienceLevel:credentials.experienceLevel,employmentType:credentials.employmentType,companyLogo:credentials.companyLogo,description:credentials.description})
+            body:JSON.stringify({email:credentials.email,companyName:credentials.companyName,jobTitle:credentials.jobTitle,minPrice:credentials.minPrice,maxPrice:credentials.maxPrice,salaryType:credentials.salaryType,jobLocation:credentials.jobLocation,postingDate:credentials.postingDate,experienceLevel:credentials.experienceLevel,employmentType:credentials.employmentType,companyLogo:credentials.companyLogo,description:credentials.description})
+            
             
         })
         const json= await response.json();

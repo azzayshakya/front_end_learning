@@ -2,6 +2,7 @@ const express=require('express');
 const connectDb = require('./db');
 const port=5000;
 const app= express();
+
 const cors = require('cors');
 app.use(cors())
 
@@ -13,6 +14,9 @@ app.use(express.json());
 app.use(require("./Routes/PostJob"));
 app.use(require("./Routes/SignUpRoute"))
 app.use(require("./Routes/LoginUserRoute"))
+app.use(require("./Routes/MyCreatedJobsRoute"))
+app.use(require("./Routes/ajayroute"))
+
 
 
 app.listen(port, () => {

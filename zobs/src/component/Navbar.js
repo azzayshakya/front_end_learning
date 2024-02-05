@@ -35,7 +35,11 @@ const Navbar=()=>{
             </div>
         </div>
 
-        <div className="navbarMid a">
+       
+
+        {(localStorage.getItem("authToken")) ?
+        <div>
+             <div className="navbarMid a">
             <ul>
                 <li className="navbarNames active"><Link className='LinkTAG LinkTAGHome active' to={"/"}>Home</Link></li>
                 <li className="navbarNames"><Link className='LinkTAG' to={"/MyCreatedJobs"}>My Jobs</Link></li>
@@ -43,6 +47,21 @@ const Navbar=()=>{
                 <li className="navbarNames"><Link className='LinkTAG' to={"/PostAJob"}>Post A Job</Link></li>
             </ul>
         </div>
+
+        </div>
+        :
+        <div>
+             <div className="navbarMid a">
+            <ul>
+                <li className="navbarNames active"><Link className='LinkTAG LinkTAGHome active' to={"/"}>Home</Link></li>
+                <li className="navbarNames"><Link className='LinkTAG' to={"/MyCreatedJobs"}>My Jobs</Link></li>
+                <li className="navbarNames">Posted Jobs</li>
+                <li className="navbarNames"><Link className='LinkTAG' to={"/PostAJob"}>Post A Job</Link></li>
+            </ul>
+        </div>
+        
+        </div>
+        }
 
         {(localStorage.getItem("authToken")) ?
         <div className="buttonside a">
