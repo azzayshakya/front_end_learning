@@ -1,15 +1,8 @@
-import {ACTION_TYPES} from "../constants/action-types"
+import {actionTypes} from "../constants/action-types"
 
-export const setProduct=(products)=>{
+export const setProduct=(job)=>{
     return {
-        type:ACTION_TYPES.SET_PRODUCT,
-        payload:products
-    }
-}
-
-export const selectedProduct=(product)=>{
-    return {
-        type:ACTION_TYPES.SELECTED_PRODUCT,
-        payload:product
+        type:actionTypes.SET_PRODUCT,
+        payload:job
     }
 }

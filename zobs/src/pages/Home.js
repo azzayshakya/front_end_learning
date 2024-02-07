@@ -88,11 +88,8 @@ const Home =()=>{
             <Navbar/>
             <Banner query={query} handleSearch={handleSearch}/>
         </div>
-        {/* main */}
-    
-    </div>
-
-    <div className='mainContainerHome'>
+        
+        <div className='mainContainerHome'>
 
             <div className="leftHome">
                {/* <SideBar handleChange={handleChange} handleClick={handleClick}/> */}
@@ -107,6 +104,24 @@ const Home =()=>{
          
            
         </div>
+    
+    </div>
+
+    {/* <div className='mainContainerHome'>
+
+            <div className="leftHome">
+             
+            </div>
+            <div className="midContainer">
+            <Jobs result={result}/>
+            </div>
+            <div className="rightHome">
+            
+            </div>
+
+         
+           
+        </div> */}
    
     </>
 }

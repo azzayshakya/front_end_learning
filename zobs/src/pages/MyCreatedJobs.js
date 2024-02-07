@@ -2,14 +2,24 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../component/Navbar";
 import SingleCreatedJob from "../component/SingleCreaedJob";
 import UpdatePage from "../component/UpdatePage";
+import {useDispatch, useSelector } from "react-redux";
+import {setProduct} from "../redux/action/actions"
 
 const MyCreatedJobs = () => {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
 
+    
+            // console.log(Products)
+    const dispatch=useDispatch();
+        
+
     const getData = async () => {
         try {
             setLoading(true);
+            
+
+
             const response = await fetch("http://localhost:5000/MyCreatedJobs", {
                 method: 'POST',
                 headers: {
@@ -21,7 +31,9 @@ const MyCreatedJobs = () => {
             });
             const jsonData = await response.json();
             setData(jsonData.postedJobs);
-            console.log("jobdata",jsonData)
+            // dispatch(setProduct(jsonData.postedJobs))
+            // console.log("jobdata",jsonData)
+
 
 
 
@@ -33,9 +45,13 @@ const MyCreatedJobs = () => {
         }
     };
 
+    // console.log("hey bro Products",Products)
+
     useEffect(() => {
         getData();
     }, []);
+
+
 
     return (
         <div>
@@ -52,8 +68,7 @@ const MyCreatedJobs = () => {
                                        
                                         <SingleCreatedJob job={job} />   
                                         {/* <UpdatePage UpdateJob={job}/>  */}
-
-                                                                         
+                                                                                                                 
                                     </div>
                                 ))}
                             </div>

@@ -1,10 +1,16 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link} from "react-router-dom";
+import {useDispatch, useSelector } from "react-redux";
+import {setProduct} from "../redux/action/actions"
 
 const SingleCreatedJob = ({ job }) => {
-  // console.log("SingleCreatedJob", job);
-
-
+  const dispatch=useDispatch();
+  const handleDispatchJob = () => {
+    dispatch(setProduct(job));
+  };
+  
+  
+  
   return (
     <div style={{ border:"2px red solid"}}  >
       <h2 >Job Details</h2>
@@ -28,7 +34,7 @@ const SingleCreatedJob = ({ job }) => {
     <div className="button">
 
     <Link to="/ajay">
-      <button > Update</button>
+    <button onClick={handleDispatchJob}> Update</button>
     </Link>
 
     </div>
