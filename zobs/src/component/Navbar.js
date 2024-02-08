@@ -15,9 +15,15 @@ const Navbar=()=>{
     }
     const handleLogout=()=>{
         console.log("before logout",localStorage.getItem("authToken") )
+        console.log("userEmail  ",localStorage.getItem("userEmail"))
+        
+
 
         localStorage.removeItem("authToken");
+        localStorage.removeItem("userEmail")
         console.log("succesfully logout",localStorage.getItem("authToken") )
+        console.log("after logOut userEmail  ",localStorage.getItem("userEmail"))
+
         Navigate("LogIn")
     }
 
@@ -43,7 +49,7 @@ const Navbar=()=>{
             <ul>
                 <li className="navbarNames active"><Link className='LinkTAG LinkTAGHome active' to={"/"}>Home</Link></li>
                 <li className="navbarNames"><Link className='LinkTAG' to={"/MyCreatedJobs"}>My Jobs</Link></li>
-                <li className="navbarNames">azay</li>
+                <li className="navbarNames"><Link className='LinkTAG' to={"/AllJobs"}>All Jobs</Link></li>
                 <li className="navbarNames"><Link className='LinkTAG' to={"/PostAJob"}>Post A Job</Link></li>
             </ul>
         </div>
@@ -54,9 +60,9 @@ const Navbar=()=>{
              <div className="navbarMid a">
             <ul>
                 <li className="navbarNames active"><Link className='LinkTAG LinkTAGHome active' to={"/"}>Home</Link></li>
-                <li className="navbarNames"><Link className='LinkTAG' to={"/MyCreatedJobs"}>My Jobs</Link></li>
-                <li className="navbarNames">Posted Jobs</li>
-                <li className="navbarNames"><Link className='LinkTAG' to={"/PostAJob"}>Post A Job</Link></li>
+                <li className="navbarNames"><Link className='LinkTAG' to={""}>Azzay</Link></li>
+                <li className="navbarNames">Azzay</li>
+                <li className="navbarNames"><Link className='LinkTAG' to={""}>Azzay</Link></li>
             </ul>
         </div>
         

@@ -4,18 +4,19 @@ import Banner from '../component/Banner';
 import {} from '../Css/Home.css'
 import Card from '../component/Card';
 import Jobs from './Jobs';
-import SideBar from '../SideBar/SideBar';
+
+
 
 const Home =()=>{
 
-    //for the search in banner
+    //for the search in banner bitch
     const [query ,setquery]=useState("");
     const handleSearch=(event)=>{
         setquery(event.target.value);
     }
 
 
-    // for the home page
+    // for the home page bro
 
     const[selectedCategory,setselectedCategory] =useState();
     const [jobs,setjobs]=useState([]);
@@ -23,9 +24,23 @@ const Home =()=>{
     const fetchjobdata=async()=>{
         try{
 
+            const alljobs= await fetch("http://localhost:5000/alljobs",{
+                method:"POST",
+                headers:{
+                    'Content-Type':'apllication/json'
+                },
+                body:JSON.stringify({email:localStorage.getItem("userEmail")})                
+            })
+            const response2=await alljobs.json()
+            console.log("alljobs data", response2.data)
+            setjobs(response2.data)
+
+            
+
             const response=await fetch("jobs.json")
             const jobdata=  await response.json();
-            setjobs(jobdata);
+            // setjobs(jobdata);
+            console.log("jobdata",jobdata)
             // console.log(jobdata)
         }
         catch(error){
@@ -41,18 +56,13 @@ const Home =()=>{
     
     }, [])
 
+
     const filterdItem=jobs.filter((job)=>job.jobTitle.toLowerCase().indexOf(query.toLowerCase())!==-1)
-    // console.log(filterdItem)
 
-    // for the radio filtration
-    const handleChange=(event)=>{
-        setselectedCategory(event.target.value)
-    }
 
-    //  hakdle button based filtration
-    const handleClick=(event)=>{
-        setselectedCategory(event.target.value)
-    }
+    
+
+    
     
     //  main funcction
     const filterdData=(jobs,selected,query)=>{
@@ -61,17 +71,7 @@ const Home =()=>{
             filteredJobs= filterdItem;
         }
         // catagoring filtraion
-        if (selected) {
-            filteredJobs = filteredJobs.filter(({ jobLocation, maxPrice, employementType }) => {
-                return (
-                    jobLocation.toLowerCase() === selected.toLowerCase() ||
-                    parseInt(maxPrice) === parseInt(selected) ||
-                    employementType.toLowerCase() === selected.toLowerCase()
-                );
-            });
-            console.log(filteredJobs);
-        }
-
+        
         return filteredJobs.map((data,i)=><Card key={i} data={data}/>)  
     }
 
@@ -92,13 +92,13 @@ const Home =()=>{
         <div className='mainContainerHome'>
 
             <div className="leftHome">
-               {/* <SideBar handleChange={handleChange} handleClick={handleClick}/> */}
             </div>
+
             <div className="midContainer">
             <Jobs result={result}/>
             </div>
+
             <div className="rightHome">
-                {/* right */}
             </div>
 
          

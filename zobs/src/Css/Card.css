@@ -26,7 +26,7 @@
 .card{
     margin-top: 20px;
     height: 200px;
-    border: 1px rgb(189, 189, 189) solid;
+    /* border: 1px rgb(189, 189, 189) solid; */
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -101,6 +101,25 @@ backdrop-filter:blur(10px) ;
 
 }
 
+.applybutton  button{
+    border: none;
+    border-radius: 52px;
+/* background: rgba( 255, 255, 255, 0.25 ); */
+background-color: white;
+backdrop-filter:blur(10px) ;
+height: 50px;
+width: 100px;
+z-index: 100;
+
+cursor: pointer;
+position: relative;
+left: 500px;
+top: -200px;
+
+
+
+
+}
 
 
 

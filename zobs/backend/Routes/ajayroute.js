@@ -1,14 +1,15 @@
 const express = require('express');
 const router= express.Router();
-const userJob= require("../model/UserJob")
+const alljobs = require("../model/PostJob")
 
-router.post("/ajay",async(req,res)=>{
-    console.log("hey")
-    const email= req.body.email;
+router.post("/alljobs",async(req,res)=>{
+    // console.log("hey")
+    
+    
     try{
-        const data = await userJob.findOne({email})
-        // console.log(data)
-         
+        // const email=  req.body.email;
+        const data = await alljobs.find()
+        // console.log("all data",data)         
         res.status(500).json({success:true,data})
     }
 
@@ -18,7 +19,4 @@ router.post("/ajay",async(req,res)=>{
 
    
   })
-
-
-
 module.exports = router;

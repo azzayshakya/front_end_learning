@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../component/Navbar";
-import SingleCreatedJob from "../component/SingleCreaedJob";
-import UpdatePage from "../component/UpdatePage";
+import SingleCreatedJob from "../component/SingleCreatedJob";
 import {useDispatch, useSelector } from "react-redux";
 import {setProduct} from "../redux/action/actions"
 
@@ -54,11 +53,14 @@ const MyCreatedJobs = () => {
 
 
     return (
-        <div>
+        <div className="myCreatedJobMain">
             <Navbar />
             <div>
                 {loading ? (
-                    <h1>Data is loading</h1>
+                    <div className="DataLoading">
+                    <h2>Data is loading !</h2>
+                    <div class="loader"></div>
+                    </div>
                 ) : (
                     <div>
                         {data && data.length > 0 ? (
@@ -67,7 +69,7 @@ const MyCreatedJobs = () => {
                                     <div key={job._id}>
                                        
                                         <SingleCreatedJob job={job} />   
-                                        {/* <UpdatePage UpdateJob={job}/>  */}
+                
                                                                                                                  
                                     </div>
                                 ))}

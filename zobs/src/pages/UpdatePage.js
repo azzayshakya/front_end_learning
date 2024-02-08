@@ -2,24 +2,28 @@
     import {} from "../Css/ajay.css"
     import { Link } from "react-router-dom";
     import { UseSelector, useSelector } from "react-redux";
-    const Ajay = () => {
-        const Products = useSelector(state => state.allProducts.products);
+import Navbar from "../component/Navbar";
+    const UpdatePage = () => {
+    const products = useSelector(state => state.allProducts.products);
+    console.log(products)
+      
+
+    const [updatedJob, setUpdatedJob] = useState({
+        _id: products._id,
+        companyName: products.companyName || "",
+        jobTitle: products.jobTitle || "",
+        minPrice: products.minPrice || "",
+        maxPrice: products.maxPrice || "",
+        salaryType: products.salaryType || "",
+        jobLocation: products.jobLocation || "",
+        postingDate: products.postingDate || "",
+        experienceLevel: products.experienceLevel || "",
+        employmentType: products.employmentType || "",
+        companyLogo: products.companyLogo || "",
+        description: products.description || ""
+    });
     
-        const [updatedJob, setUpdatedJob] = useState({
-            companyName: "",
-            jobTitle: "",
-            minPrice: "",
-            maxPrice: "",
-            salaryType: "",
-            jobLocation: "",
-            postingDate: "",
-            experienceLevel: "",
-            employmentType: "",
-            companyLogo: "",
-            description: ""
-        });
-    
-        // Handle form input changes
+        
         const handleInputChange = (e) => {
             const { name, value } = e.target;
             setUpdatedJob(prevState => ({
@@ -32,28 +36,32 @@
             setUpdatedJob({ ...updatedJob, [event.target.name]: event.target.value });
         };
     
-        // Handle form submission
+
         const handleSubmit = async (e) => {
             e.preventDefault();
             try {
-                // Make a POST request to update job information
                 const response = await fetch("http://localhost:5000/updateJob", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(updatedJob)
+                    body: JSON.stringify({updatedJob,email:localStorage.getItem('userEmail')})
                 });
                 const data = await response.json();
-                console.log(data); // Log response from backend
-                // Optionally, you can handle success or error messages from the backend
+                console.log("updated job ", data);
             } catch (error) {
                 console.error(error);
             }
         };
+        
     
-        return (
-            // <input type="text" name="companyName" value={updatedJob.companyName} onChange={handleInputChange} />
+        return (<>
+
+        <div>
+            <Navbar/>
+        </div>
+
+            
 
             
                 <div className="upperPostJob">
@@ -185,7 +193,7 @@
         </div>
 
                 
-        );
+        </>);
     }
     
-    export default Ajay;
+    export default UpdatePage;
