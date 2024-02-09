@@ -3,7 +3,7 @@ import Navbar from "../component/Navbar";
 
 const Alljob=()=>{
     const fetchdata=async(req,res)=>{
-        const fatchedData=await fetch("http://localhost:5000/alljobs",{
+        const fatchedData=await fetch("http://localhost:5000/applicants",{
             method:"POST",
             headers:{
                 'Content-Type':'application/json'

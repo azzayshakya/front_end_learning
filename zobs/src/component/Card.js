@@ -10,27 +10,30 @@ const Card = ({ data }) => {
     const togglePopup = () => {
         setPopup(!popup);
     }
+    const jobid=data._id;
+    const jobtitle=data.jobTitle;
+    console.log(jobid,jobtitle)
 
-    const [credentials,setcredentials]=useState({name:"",email:""});
+    const [credentials,setcredentials]=useState({name:"",email:"",number:"",file:"",skills:"",experienceLevel:"",experienceinyears:""});
 
 
     
-    const handleFormSubmit=async(req,res)=>{
-    console.log(credentials)
+    const handleFormSubmit=async(event)=>{
+        event.preventDefault();
+        console.log(credentials, jobid, jobtitle);
 
 
         try{
-            const apply=("http://localhost:5000/applyforjob",{
-            method:"POST",
+            const apply= await fetch("http://localhost:5000/applyforjob",{
+            method:"POST",  
             headers:{
-                'Content-Type':'application/json'
+                'Content-Type': 'application/json'
             },
-            body:JSON.stringify(credentials)
-            
+            body: JSON.stringify({ formData: credentials, jobid, jobtitle })  
         })
         
-        const response = apply.json();
-        console.log("applied data  ",apply)
+        const response = await apply.json();
+        console.log("applied data  ",response)
         }
 
         catch(error){
@@ -40,6 +43,9 @@ const Card = ({ data }) => {
     const handleInputChange=(event)=>{
         setcredentials({...credentials,[event.target.name]:event.target.value})
     }
+    const handleRadioChange = (event) => {
+        setcredentials({ ...credentials, [event.target.name]: event.target.value });
+    };
 
 
     const {
@@ -91,7 +97,7 @@ const Card = ({ data }) => {
                 </Link>
                 
             </div>
-            {/* {popup ? <h1>Show Popup Content</h1> : <h1>Other Content</h1>} */}
+            
 
             <div>
                 {
@@ -102,44 +108,95 @@ const Card = ({ data }) => {
 
                                 <div className="row">
                                     <div className='leftelementincardform'>
-                                        <label></label>
+                                        <label>name</label>
                                         <input type="text" name="name" placeholder="Full Name" value={credentials.name} onChange={handleInputChange} />
 
                                     </div>
                                     <div className="rightelementincardform">
-                                        <label></label>
-                                        <input type="email" name="email" placeholder="Email" value={credentials.email} onChange={handleInputChange} />
-
-                                    </div>
-                                </div><div className="row">
-                                    <div className='leftelementincardform'>
-                                        <label></label>
-                                        <input type="number" name="number" placeholder="number" value={credentials.number} onChange={handleInputChange} />
-
-                                    </div>
-                                    <div className="rightelementincardform">
-                                        <label></label>
+                                        <label>Email</label>
                                         <input type="email" name="email" placeholder="Email" value={credentials.email} onChange={handleInputChange} />
 
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className='leftelementincardform'>
-                                        <label></label>
-                                        <input type="text" name="name" placeholder="Full Name" value={credentials.name} onChange={handleInputChange} />
+                                        <label>number</label>
+                                        <input type="number" name="number" placeholder="number" value={credentials.number} onChange={handleInputChange} />
 
                                     </div>
                                     <div className="rightelementincardform">
-                                        <label></label>
-                                        <input type="email" name="email" placeholder="Email" value={credentials.email} onChange={handleInputChange} />
-
+                                        <label>file</label>
+                                        <input type="file" name="file" placeholder="file" value={credentials.file} onChange={handleInputChange} />
                                     </div>
+
+                                </div>
+
+                                <div className="row rowexp">
+                                <div className='radioincardform'>
+
+                                    
+                                <div className=''> 
+                                    <p> Experience Level :</p>
+                                    <label htmlFor="Fresher">
+                                        <input
+                                            type="radio"
+                                            id="Fresher"
+                                            name="experienceLevel"
+                                            value="Fresher"
+                                            checked={credentials.experienceLevel === "Fresher"}
+                                            onChange={handleRadioChange}
+                                        />
+                                        Fresher
+                                    </label><br />
+                            
+                                    <label htmlFor="Internship">
+                                        <input
+                                            type="radio"
+                                            id="Internship"
+                                            name="experienceLevel"
+                                            value="Internship"
+                                            checked={credentials.experienceLevel === "Internship"}
+                                            onChange={handleRadioChange}
+                                        />
+                                        Internship
+                                    </label><br />
+                            
+                                    <label htmlFor="WorkedForaCompany">
+                                        <input
+                                            type="radio"
+                                            id="WorkedForaCompany"
+                                            name="experienceLevel"
+                                            value="Worked For a Company"
+                                            checked={credentials.experienceLevel === "Worked For a Company"}
+                                            onChange={handleRadioChange}
+                                        />
+                                        Working 
+                                    </label>
+                                </div>
+                            </div>
+
+                            
+                                    <div className="rightelementincardform">
+                                        <label>Experience in years ( If have )</label>
+                                        <input type="number" name="experienceinyears" placeholder="Experience in years" value={credentials.experienceinyears} onChange={handleInputChange} />
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className='skiilsinform'>
+                                        <label>skills</label>
+                                        <textarea name="skills" id="" cols="40" rows="3" placeholder='skills' value={credentials.skills} onChange={handleInputChange} ></textarea>
+                                    </div>
+                                    
                                 </div>
                             
                             <div>
 
                             </div>
-                            <button type="submit" onClick={handleFormSubmit}>Submit</button>
+                            <div className='submitformdatabutton'>
+                            <button type="submit" className='' onClick={handleFormSubmit}>Submit</button>
+
+
+                            </div>
                             </div>
 
 

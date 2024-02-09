@@ -27,7 +27,7 @@ const Home =()=>{
             const alljobs= await fetch("http://localhost:5000/alljobs",{
                 method:"POST",
                 headers:{
-                    'Content-Type':'apllication/json'
+                    'Content-Type':'application/json'
                 },
                 body:JSON.stringify({email:localStorage.getItem("userEmail")})                
             })
@@ -91,15 +91,13 @@ const Home =()=>{
         
         <div className='mainContainerHome'>
 
-            <div className="leftHome">
-            </div>
+           
 
             <div className="midContainer">
             <Jobs result={result}/>
             </div>
 
-            <div className="rightHome">
-            </div>
+            
 
          
            
