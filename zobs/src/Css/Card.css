@@ -3,7 +3,7 @@
     max-height: 600px; 
     
     padding-right: 20px; 
-    border: 2px blue solid;
+    /* border: 2px blue solid; */
     
 
 }
@@ -28,7 +28,7 @@
 .card{
     margin-top: 20px;
     height: 200px;
-    border: 1px red solid;
+    /* border: 1px red solid; */
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -127,18 +127,29 @@ top: -200px;
 
  
 .applyForm{
-    padding-top: 20px;
     padding: 0px 20px;
-    /* border: 2px  yellow solid; */
+    border: 2px  black solid;
     position:  relative;
     /* top: -150px; */
-    left:100px;
+    left:20px;
     background-color: black;
-    width: 550px;
-    height:580px;
+    width: 620px;
+    height:600px;
     /* padding-bottom: -10px; */
+    background-image: url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Set the background image */
+    background-size: cover; 
+    background-position: center; 
+    border-radius: 52px;
 
 
+
+}
+.applyforminner{
+    background: rgba( 255, 255, 255, 0.25 );
+    backdrop-filter:blur(10px) ;
+    border-radius: 52px;
+    padding: 20px;
+    margin-top: 15px;
 }
 .row{
     /* border: 2px red solid; */
@@ -150,7 +161,7 @@ top: -200px;
 .row label{
     /* position: relative; */
     /* top: -10px; */
-    color: white;
+    color: black;
 
 }
 .row input{
@@ -197,9 +208,12 @@ top: -200px;
     
 
 }
+/* .applyformradio p{
+    color: black;
+} */
 .radioincardform p{
     /* border: green 2px solid; */
-    color: white;
+    color: black;
     /* margin-top: 0px; */
 }
 

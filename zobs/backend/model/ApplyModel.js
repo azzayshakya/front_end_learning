@@ -11,10 +11,17 @@ const UserJob = new Schema({
         type:String,
         // default:true
     },
+    jobemail:{
+        type:String,
+        // default:true
+    },
 
     applicant:{
         type:Array,
         // default:true
+    },
+    link:{
+        type:String
     }
 })
 

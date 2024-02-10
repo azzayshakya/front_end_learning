@@ -1,13 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const applicant = require("../model/ApplyModel");
+const multer=require('multer')
+const upload=multer({dest:'uploads/'});
+const cloudinary = require("../middleware/cloudnary");
 
-router.post("/applyforjob", async (req, res) => {
+router.post("/applyforjob",upload.single("myfile"),async (req, res) => {
 
 
     try {
-        const { jobid, jobtitle, formData } = req.body;
+        const result=await cloudinary.uploader.upload(req.file.path)
+        console.log(result)
+        //result.secure_url
+        const { jobid, jobtitle,jobemail, formData } = req.body;
         const { name, email, number, file, skills, experienceLevel, experienceinyears } = formData;
+
 
         let jobdata = await applicant.findOne({ jobid });
 
@@ -15,19 +22,20 @@ router.post("/applyforjob", async (req, res) => {
             await applicant.create({
                 jobid,
                 jobtitle,
+                jobemail,
                 applicant: [{
                     name,
                     email,
                     number,
                     skills,
-                    file,
+                    file:result.secure_url,
                     experienceLevel,
                     experienceinyears,
                 }],
             });
         } else {
             await applicant.findOneAndUpdate(
-                { jobid, jobtitle },
+                { jobid, jobtitle,jobemail },
                 {
                     $push: {
                         applicant: {
@@ -35,7 +43,7 @@ router.post("/applyforjob", async (req, res) => {
                             email,
                             number,
                             skills,
-                            file,
+                            file:result.secure_url,
                             experienceLevel,
                             experienceinyears,
                         },

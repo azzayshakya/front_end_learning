@@ -40,7 +40,7 @@ const PostJob = () => {
 
 
 
-    return <div>
+    return <div className='postjobpagemain'>
         <div>
             <Navbar/>
         </div>
@@ -121,7 +121,7 @@ const PostJob = () => {
                             checked={credentials.experienceLevel === "Fresher"}
                             onChange={handleRadioChange}
                             />
-                            <label htmlFor="html">Fresher</label><br />
+                            <label htmlFor="Fresher">Fresher</label><br />
 
                             <input
                             type="radio"
@@ -131,17 +131,18 @@ const PostJob = () => {
                             checked={credentials.experienceLevel === "Internship"}
                             onChange={handleRadioChange}
                             />
-                            <label htmlFor="css">Internship</label><br />
+                            <label htmlFor="Internship">Internship</label><br />
 
                             <input
                             type="radio"
                             id="WorkedForaCompany"
                             name="experienceLevel"
-                            value="WorkedForaCompany"
+                            value="Worked For a Company"
                             checked={credentials.experienceLevel === "Worked For a Company"}
                             onChange={handleRadioChange}
                             />
-                            <label htmlFor="javascript">Worked For A Company</label>
+                             
+                            <label htmlFor="WorkedForaCompany">Worked For A Company</label>
                     </div>
                     
                 </div>

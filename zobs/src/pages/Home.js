@@ -32,15 +32,15 @@ const Home =()=>{
                 body:JSON.stringify({email:localStorage.getItem("userEmail")})                
             })
             const response2=await alljobs.json()
-            console.log("alljobs data", response2.data)
+            // console.log("alljobs data", response2.data)
             setjobs(response2.data)
 
             
 
-            const response=await fetch("jobs.json")
-            const jobdata=  await response.json();
+            // const response=await fetch("jobs.json")
+            // const jobdata=  await response.json();
             // setjobs(jobdata);
-            console.log("jobdata",jobdata)
+            // console.log("jobdata",jobdata)
             // console.log(jobdata)
         }
         catch(error){

@@ -7,7 +7,7 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import MyCreatedJobs from './pages/MyCreatedJobs';
 import UpdatePage from './pages/UpdatePage';
-import Alljob from './pages/AllJobs';
+import JobApplicants from './pages/JobApplicants'
 
 
 function App() {
@@ -21,7 +21,10 @@ function App() {
           <Route exact path='SignUp' element={<SignUp/>}/>
           <Route exact path='MyCreatedJobs' element={<MyCreatedJobs/>}/>
           <Route exact path='UpdatePage' element={<UpdatePage/>}/>
-          <Route exact path='AllJobs' element={<Alljob/>}/>
+          <Route exact path='JobApplicants' element={<JobApplicants/>}/>
+
+
+
 
 
         </Routes>

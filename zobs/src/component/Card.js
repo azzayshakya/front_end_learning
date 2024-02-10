@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { FiCalendar, FiClock, FiDollarSign, FiMapPin } from 'react-icons/fi';
 import '../Css/Card.css'; 
 
-const Card = ({ data }) => {
+const Card = ({ data }) => {    
+   
     
 
     const [popup , setPopup]=useState(false);
@@ -12,16 +13,20 @@ const Card = ({ data }) => {
     }
     const jobid=data._id;
     const jobtitle=data.jobTitle;
-    console.log(jobid,jobtitle)
+    const jobemail=data.email;
+    
 
-    const [credentials,setcredentials]=useState({name:"",email:"",number:"",file:"",skills:"",experienceLevel:"",experienceinyears:""});
 
+    const [credentials,setcredentials]=useState({name:"",email:"",number:"",file:null,skills:"",experienceLevel:"",experienceinyears:""});
+    console.log(credentials)
 
     
-    const handleFormSubmit=async(event)=>{
+    const handleFormSubmit=async(event)=>{  
+        // console.log(credentials)      
         event.preventDefault();
-        console.log(credentials, jobid, jobtitle);
-
+        
+        const formDataToSend=new FormData();
+        formDataToSend.append('myfile',credentials.file)
 
         try{
             const apply= await fetch("http://localhost:5000/applyforjob",{
@@ -29,11 +34,11 @@ const Card = ({ data }) => {
             headers:{
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ formData: credentials, jobid, jobtitle })  
+            body: formDataToSend  
         })
         
         const response = await apply.json();
-        console.log("applied data  ",response)
+        // console.log("applied data  ",response)
         }
 
         catch(error){
@@ -46,6 +51,10 @@ const Card = ({ data }) => {
     const handleRadioChange = (event) => {
         setcredentials({ ...credentials, [event.target.name]: event.target.value });
     };
+
+    const handleFileChange=(e)=>{
+        setcredentials({...credentials,file:e.target.files[0]})
+    }
 
 
     const {
@@ -103,8 +112,8 @@ const Card = ({ data }) => {
                 {
                     popup ? 
                     (
-                        <div>
-                            <div className='applyForm'>
+                        <div className='applyForm'>
+                            <div className='applyforminner'>
 
                                 <div className="row">
                                     <div className='leftelementincardform'>
@@ -126,7 +135,7 @@ const Card = ({ data }) => {
                                     </div>
                                     <div className="rightelementincardform">
                                         <label>file</label>
-                                        <input type="file" name="file" placeholder="file" value={credentials.file} onChange={handleInputChange} />
+                                        <input type="file" name="file" placeholder="file"  onChange={handleFileChange} />
                                     </div>
 
                                 </div>
@@ -135,7 +144,7 @@ const Card = ({ data }) => {
                                 <div className='radioincardform'>
 
                                     
-                                <div className=''> 
+                                <div className='applyformradio'> 
                                     <p> Experience Level :</p>
                                     <label htmlFor="Fresher">
                                         <input
