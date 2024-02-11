@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiCalendar, FiClock, FiDollarSign, FiMapPin } from 'react-icons/fi';
 import '../Css/Card.css'; 
+// import { json } from 'express';
 
 const Card = ({ data }) => {    
    
@@ -18,15 +19,15 @@ const Card = ({ data }) => {
 
 
     const [credentials,setcredentials]=useState({name:"",email:"",number:"",file:null,skills:"",experienceLevel:"",experienceinyears:""});
-    console.log(credentials)
+    // console.log(credentials)
 
     
     const handleFormSubmit=async(event)=>{  
-        // console.log(credentials)      
+        console.log(credentials)      
         event.preventDefault();
         
-        const formDataToSend=new FormData();
-        formDataToSend.append('myfile',credentials.file)
+        // const formDataToSend=new FormData();
+        // formDataToSend.append('myfile',credentials.file)
 
         try{
             const apply= await fetch("http://localhost:5000/applyforjob",{
@@ -34,7 +35,7 @@ const Card = ({ data }) => {
             headers:{
                 'Content-Type': 'application/json'
             },
-            body: formDataToSend  
+            body:JSON.stringify({ formData:credentials,jobid,jobtitle,jobemail})
         })
         
         const response = await apply.json();
