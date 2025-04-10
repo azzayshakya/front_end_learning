@@ -4,6 +4,9 @@ import { ErrorPage } from "../pages/common/ErrorPage";
 import { NotFoundPage } from "../pages/common/NotFoundPage";
 import RedirectPage from "../pages/common/RedirectPage";
 import HomeUILayout from "../layout/Home/HomeLayout";
+import SimpleApi from "@/pages/SimpleApi";
+import Tanstack from "@/pages/Tanstack";
+import MapFunction from "@/pages/MapFunction";
 
 const router = createBrowserRouter(
   [
@@ -19,6 +22,18 @@ const router = createBrowserRouter(
         {
           path: "/home",
           element: <Home />,
+        },
+        {
+          path: "/SimpleApi",
+          element: <SimpleApi />,
+        },
+        {
+          path: "/Tanstack",
+          element: <Tanstack />,
+        },
+        {
+          path: "/MapFunction",
+          element: <MapFunction />,
         },
 
         {
