@@ -11,7 +11,7 @@ const GetAllProjects = () => {
   useEffect(() => {
     fetchProjects(undefined, {
       onSuccess: (projectsData) => {
-        console.log(projectsData)
+        console.log(projectsData);
         setProjects(projectsData);
       },
     });
@@ -20,6 +20,11 @@ const GetAllProjects = () => {
   return (
     <div className="projects-page">
       <Navbar />
+
+      <h1 className="mx-10 my-3 flex items-center justify-center rounded-lg bg-muted-foreground p-3">
+        Get All Projects Without Caching
+      </h1>
+
       {isFetching ? (
         <p>Loading projects...</p>
       ) : (
