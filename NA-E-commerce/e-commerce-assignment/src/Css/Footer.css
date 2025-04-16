@@ -1,0 +1,85 @@
+.footer{
+    background-color: white;
+    color: black;
+    margin-top: 100px;
+    padding-bottom: 100px;
+    padding-right: 50px;
+
+}
+.footerrows{
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-around;
+    flex-wrap: wrap;
+   
+
+}
+.footerrows .midrow{
+    margin: 0px 10px;
+}
+.footerrows p{
+    width: 150px ;
+    border-bottom: 1px black solid;
+    padding-bottom: 20px;
+
+}
+.footer span{
+    font-weight: bold;
+    /* font-size: 20px; */
+}
+
+.footerBottomPart{
+    text-align: center;
+    /* border: 2px red solid; */
+    margin-top: 20px;
+}
+.footerContect{
+    font-weight: bold;
+    font-size: 30px;
+    /* border: 2px red solid; */
+}
+.footerBottomPart p{
+    /* margin-top: -10px; */
+    /* font-size: 20px; */
+}
+.footerBottomPart .mailAtFooter{
+    /* border: 2px red solid; */
+    margin-top: -25px;
+
+}
+.footerBottomPart .footericons{
+    margin-top: -5px;
+    font-size: 30px;
+    /* padding: 0px px; */
+}
+.footerBottomPart span{
+    
+    margin: 0px 10px;
+
+    
+
+}
+
+
+@media (max-width: 768px) {
+    .footerrows{
+        display: flex;
+    
+    }
+   
+}
+@media (max-width: 382px) {
+    .footerrows{
+        display: flex;
+        
+        
+    }
+    .footerrows .leftrow {
+        margin-bottom: 10px;
+      
+    }
+    .footerrows .midrow {
+        margin-bottom: 10px;
+   
+    }
+}
