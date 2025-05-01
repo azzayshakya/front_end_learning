@@ -1,0 +1,15 @@
+1:  Flow Summary: How This All Works Together
+
+npm run dev   -->   triggers Vite   -->   Vite reads vite.config.js
+                             ↓
+                Vite sees plugins: [react()]
+                             ↓
+              Uses the plugin to process JSX, enable Fast Refresh, etc.
+                             ↓
+                 Loads index.html → main.jsx → App.jsx
+                             ↓
+            Runs the dev server, serves your app live in browser
+        
+
+
+
