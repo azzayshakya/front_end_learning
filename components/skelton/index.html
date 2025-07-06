@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Skeleton Loaders</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Base skeleton animation */
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 1000px 100%;
+            animation: shimmer 2s infinite linear;
+            border-radius: 4px;
+        }
+
+        /* Hide content while loading */
+        .hidden {
+            display: none;
+        }
+
+        /* YouTube style skeleton */
+        .youtube-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .youtube-card {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .youtube-thumbnail {
+            height: 160px;
+            width: 100%;
+        }
+
+        .youtube-content {
+            padding: 12px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .youtube-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .youtube-info {
+            flex-grow: 1;
+        }
+
+        .youtube-title {
+            height: 20px;
+            margin-bottom: 8px;
+            width: 100%;
+        }
+
+        .youtube-channel {
+            height: 16px;
+            width: 60%;
+            margin-bottom: 4px;
+        }
+
+        .youtube-stats {
+            height: 16px;
+            width: 40%;
+        }
+
+        /* Instagram style skeleton */
+        .instagram-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .instagram-post {
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        .instagram-header {
+            display: flex;
+            padding: 12px;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .instagram-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+
+        .instagram-username {
+            height: 18px;
+            width: 120px;
+        }
+
+        .instagram-image {
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            /* 1:1 Aspect Ratio */
+        }
+
+        .instagram-actions {
+            padding: 12px;
+        }
+
+        .instagram-likes {
+            height: 16px;
+            width: 80px;
+            margin-bottom: 8px;
+        }
+
+        .instagram-caption {
+            height: 16px;
+            width: 90%;
+            margin-bottom: 6px;
+        }
+
+        .instagram-caption-short {
+            height: 16px;
+            width: 60%;
+            margin-bottom: 12px;
+        }
+
+        .instagram-comments {
+            height: 14px;
+            width: 60%;
+        }
+
+        /* List skeleton */
+        .list-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .list-item {
+            display: flex;
+            gap: 16px;
+            padding: 12px;
+            border-radius: 8px;
+            background-color: white;
+        }
+
+        .list-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .list-content {
+            flex-grow: 1;
+        }
+
+        .list-title {
+            height: 20px;
+            width: 90%;
+            margin-bottom: 8px;
+        }
+
+        .list-description {
+            height: 16px;
+            width: 70%;
+            margin-bottom: 6px;
+        }
+
+        .list-meta {
+            height: 14px;
+            width: 40%;
+        }
+
+        /* Grid skeleton */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .grid-item {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .grid-image {
+            height: 140px;
+            width: 100%;
+        }
+
+        .grid-content {
+            padding: 12px;
+        }
+
+        .grid-title {
+            height: 18px;
+            width: 100%;
+            margin-bottom: 8px;
+        }
+
+        .grid-price {
+            height: 18px;
+            width: 40%;
+        }
+
+        /* Controls */
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #3897f0;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #1877f2;
+        }
+
+        /* Real content styling */
+        .youtube-actual-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .youtube-actual-channel {
+            color: #606060;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .youtube-actual-stats {
+            color: #606060;
+            font-size: 14px;
+        }
+
+        .instagram-actual-username {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .instagram-actual-likes {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .instagram-actual-caption {
+            font-size: 14px;
+        }
+
+        .instagram-actual-caption span {
+            font-weight: bold;
+        }
+
+        .instagram-actual-time {
+            color: #8e8e8e;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        .instagram-actual-comments {
+            color: #8e8e8e;
+            font-size: 14px;
+        }
+
+        .list-actual-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .list-actual-description {
+            color: #606060;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .list-actual-meta {
+            color: #8e8e8e;
+            font-size: 12px;
+        }
+
+        .grid-actual-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .grid-actual-price {
+            color: #111;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .youtube-container {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+
+            .grid-container {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .youtube-container {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .list-item {
+                flex-direction: column;
+            }
+
+            .list-icon {
+                width: 100%;
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Responsive Skeleton Loaders</h1>
+
+    <div class="controls">
+        <button id="toggleLoading">Toggle Loading State</button>
+    </div>
+
+    <!-- YouTube Style Skeleton -->
+    <div class="section">
+        <h2>YouTube Style</h2>
+        <div class="youtube-container">
+            <!-- Video 1 -->
+            <div class="youtube-card">
+                <!-- Skeleton -->
+                <div class="skeleton-elements">
+                    <div class="youtube-thumbnail skeleton"></div>
+                    <div class="youtube-content">
+                        <div class="youtube-avatar skeleton"></div>
+                        <div class="youtube-info">
+                            <div class="youtube-title skeleton"></div>
+                            <div class="youtube-channel skeleton"></div>
+                            <div class="youtube-stats skeleton"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Actual content -->
+                <div class="actual-content hidden">
+                    <img src="/api/placeholder/400/250" alt="Video thumbnail" class="youtube-thumbnail">
+                    <div class="youtube-content">
+                        <img src="/api/placeholder/36/36" alt="Channel avatar" class="youtube-avatar">
+                        <div class="youtube-info">
+                            <div class="youtube-actual-title">How to Create Amazing Skeleton Loaders</div>
+                            <div class="youtube-actual-channel">Web Design Masters</div>
+                            <div class="youtube-actual-stats">256K views • 3 weeks ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="youtube-card">
+                <!-- Skeleton -->
+                <div class="skeleton-elements">
+                    <div class="youtube-thumbnail skeleton"></div>
+                    <div class="youtube-content">
+                        <div class="youtube-avatar skeleton"></div>
+                        <div class="youtube-info">
+                            <div class="youtube-title skeleton"></div>
+                            <div class="youtube-channel skeleton"></div>
+                            <div class="youtube-stats skeleton"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Actual content -->
+                <div class="actual-content hidden">
+                    <img src="/api/placeholder/400/250" alt="Video thumbnail" class="youtube-thumbnail">
+                    <div class="youtube-content">
+                        <img src="/api/placeholder/36/36" alt="Channel avatar" class="youtube-avatar">
+                        <div class="youtube-info">
+                            <div class="youtube-actual-title">CSS Animation Tips for Beginners</div>
+                            <div class="youtube-actual-channel">FrontEnd Developer</div>
+                            <div class="youtube-actual-stats">128K views • 1 month ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="youtube-card">
+                <!-- Skeleton -->
+                <div class="skeleton-elements">
+                    <div class="youtube-thumbnail skeleton"></div>
+                    <div class="youtube-content">
+                        <div class="youtube-avatar skeleton"></div>
+                        <div class="youtube-info">
+                            <div class="youtube-title skeleton"></div>
+                            <div class="youtube-channel skeleton"></div>
+                            <div class="youtube-stats skeleton"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Actual content -->
+                <div class="actual-content hidden">
+                    <img src="/api/placeholder/400/250" alt="Video thumbnail" class="youtube-thumbnail">
+                    <div class="youtube-content">
+                        <img src="/api/placeholder/36/36" alt="Channel avatar" class="youtube-avatar">
+                        <div class="youtube-info">
+                            <div class="youtube-actual-title">Modern UI/UX Design Tutorial 2025</div>
+                            <div class="youtube-actual-channel">Design Insights</div>
+                            <div class="youtube-actual-stats">432K views • 2 days ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 4 -->
+            <div class="youtube-card">
+                <!-- Skeleton -->
+                <div class="skeleton-elements">
+                    <div class="youtube-thumbnail skeleton"></div>
+                    <div class="youtube-content">
+                        <div class="youtube-avatar skeleton"></div>
+                        <div class="youtube-info">
+                            <div class="youtube-title skeleton"></div>
+                            <div class="youtube-channel skeleton"></div>
+                            <div class="youtube-stats skeleton"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Actual content -->
+                <div class="actual-content hidden">
+                    <img src="/api/placeholder/400/250" alt="Video thumbnail" class="youtube-thumbnail">
+                    <div class="youtube-content">
+                        <img src="/api/placeholder/36/36" alt="Channel avatar" class="youtube-avatar">
+                        <div class="youtube-info">
+                            <div class="youtube-actual-title">Responsive Design Made Simple</div>
+                            <div class="youtube-actual-channel">Code with Alex</div>
+                            <div class="youtube-actual-stats">98K views • 5 days ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instagram Style Skeleton -->
+    <div class="section">
+        <h2>Instagram Style</h2>
+        <div class="instagram-container">
+            <!-- Post 1 -->
+            <div class="instagram-post">
+                <!-- Skeleton -->
+                <div class="skeleton-elements">
+                    <div class="instagram-header">
+                        <div class="instagram-avatar skeleton"></div>
+                        <div class="instagram-username skeleton"></div>
+                    </div>
+                    <div class="instagram-image skeleton"></div>
+                    <div class="instagram-actions">
+                        <div class="instagram-likes skeleton"></div>
+                        <div class="instagram-caption skeleton"></div>
+                        <div class="instagram-caption-short skeleton"></div>
+                        <div class="instagram-comments skeleton"></div>
+                    </div>
+                </div>
+                <!-- Actual content -->
+                <div class="actual-content hidden">
+                    <div class="instagram-header">
+                        <img src="/api/placeholder/32/32" alt="User avatar" class="instagram-avatar">
+                        <div class="instagram-actual-username">design.inspiration</div>
+                    </div>
+                    <img src="/api/placeholder/600/600" alt="Post image" style="width: 100%;">
+                    <div class="instagram-actions">
+                        <div class="instagram-actual-likes">3,245 likes</div>
+                        <div class="instagram-actual-caption">
+                            <span>design.inspiration</span> Modern UI design concepts for your next project #uidesign
+                            #webdesign #inspiration
+                        </div>
+                        <div class="instagram-actual-time">2 HOURS AGO</div>
+                        <div class="instagram-actual-comments">View all 42 comments</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post 2 -->
+            <div class="instagram-post">
+                <!-- Skeleton -->
+                <div class="skeleton-elements">
+                    <div class="instagram-header">
+                        <div class="instagram-avatar skeleton"></div>
+                        <div class="instagram-username skeleton"></div>
+                    </div>
+                    <div class="instagram-image skeleton"></div>
+                    <div class="instagram-actions">
+                        <div class="instagram-likes skeleton"></div>
+                        <div class="instagram-caption skeleton"></div>
+                        <div class="instagram-caption-short skeleton"></div>
+                        <div class="instagram-comments skeleton"></div>
+                    </div>
+                </div>
+                <!-- Actual content -->
+                <div class="actual-content hidden">
+                    <div class="instagram-header">
+                        <img src="/api/placeholder/32/32" alt="User avatar" class="instagram-avatar">
+                        <div class="instagram-actual-username">code.crafters</div>
+                    </div>
+                    <img src="/api/placeholder/600/600" alt="Post image" style="width: 100%;">
+                    <div class="instagram-actions">
+                        <div class="instagram-actual-likes">1,849 likes</div>
+                        <div class="instagram-actual-caption">
+                            <span>code.crafters</span> Our latest web project using CSS Grid and modern animations. What
+                            do you think? #webdev #css #frontend
+                        </div>
+                        <div class="instagram-actual-time">1 DAY AGO</div>
+                        <div class="instagram-actual-comments">View all 23 comments</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- List Style Skeleton -->
+    <div class="section">
+        <h2>List Style</h2>
+        <div class="list-container">
+            <!-- Item 1 -->
+            <div class="list-item">
+                <!-- Skeleton -->
+                <div class="skeleton-elements">
+                    <div class="list-icon skeleton"></div>
+                    <div class="list-content">
+                        <div class="list-title skeleton"></div>
+                        <div class="list-description skeleton"></div>
+                        <div class="list-meta skeleton"></div>
+                    </div>
+                </div>
+                <!-- Actual content -->
+                <div class="actual-content hidden">
+                    <img src="/api/placeholder/48/48" alt="Item icon" class="list-icon">
+                    <div class="list-content">
+                        <div class="list-actual-title">Introduction to Responsive Web Design</div>
+                        <div class="list-actual-description">Learn the fundamentals of creating responsive websites for
+                            all devices</div>
+                        <div class="list-actual-meta">May 15, 2025 • 12 min read</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="list-item">
+                <!-- Skeleton -->
+                <div class="skeleton-elements">
+                    <div class="list-icon skeleton"></div>
+                    <div class="list-content">
+                        <div class="list-title skeleton"></div>
+                        <div class="list-description skeleton"></div>
+                        <div class="list-meta skeleton"></div>
+                    </div>
+                </div>
+                <!-- Actual content -->
+                <div class="actual-content hidden">
+                    <img src="/api/placeholder/48/48" alt="Item icon" class="list-icon">
+                    <div class="list-content">
+                        <div class="list-actual-title">CSS Animation Masterclass</div>
+                        <div class="list-actual-description">Take your websites to the next level with advanced CSS
+                            animations</div>
+                        <div class="list-actual-meta">May 10, 2025 • 15 min read</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="list-item">
+                <!-- Skeleton -->
+                <div class="skeleton-elements">
+                    <div class="list-icon skeleton"></div>
+                    <div class="list-content">
+                        <div class="list-title skeleton"></div>
+                        <div class="list-description skeleton"></div>
+                        <div class="list-meta skeleton"></div>
+                    </div>
+                </div>
+                <!-- Actual content -->
+                <div class="actual-content hidden">
+                    <img src="/api/placeholder/48/48" alt="Item icon" class="list-icon">
+                    <div class="list-content">
+                        <div class="list-actual-title">Modern JavaScript Features</div>
+                        <div class="list-actual-description">Explore the latest features in JavaScript and how to use
+                            them effectively</div>
+                        <div class="list-actual-meta">May 5, 2025 • 8 min read</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grid Style Skeleton (e-commerce like) -->
+    <div class="section">
+        <h2>Grid Style (E-commerce)</h2>
+        <div class="grid-container">
+            <!-- Product 1 -->
+            <div class="grid-item">
+                <!-- Skeleton -->
+                <div class="skeleton-elements">
+                    <div class="grid-image skeleton"></div>
+                    <div class="grid-content">
+                        <div class="grid-title skeleton"></div>
+                        <div class="grid-price skeleton"></div>
+                    </div>
+                </div>
+                <!-- Actual content -->
+                <div class="actual-content hidden">
+                    <img src="/api/placeholder/200/140" alt="Product image" class="grid-image">
+                    <div class="grid-content">
+                        <div class="grid-actual-title">Minimal Design Notebook</div>
+                        <div class="grid-actual-price">$19.99</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="grid-item">
+                <!-- Skeleton -->
+                <div class="skeleton-elements">
+                    <div class="grid-image skeleton"></div>
+                    <div class="grid-content">
+                        <div class="grid-title skeleton"></div>
+                        <div class="grid-price skeleton"></div>
+                    </div>
+                </div>
+                <!-- Actual content -->
+                <div class="actual-content hidden">
+                    <img src="/api/placeholder/200/140" alt="Product image" class="grid-image">
+                    <div class="grid-content">
+                        <div class="grid-actual-title">Wireless Earbuds Pro</div>
+                        <div class="grid-actual-price">$89.99</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="grid-item">
+                <!-- Skeleton -->
+                <div class="skeleton-elements">
+                    <div class="grid-image skeleton"></div>
+                    <div class="grid-content">
+                        <div class="grid-title skeleton"></div>
+                        <div class="grid-price skeleton"></div>
+                    </div>
+                </div>
+                <!-- Actual content -->
+                <div class="actual-content hidden">
+                    <img src="/api/placeholder/200/140" alt="Product image" class="grid-image">
+                    <div class="grid-content">
+                        <div class="grid-actual-title">Minimalist Watch</div>
+                        <div class="grid-actual-price">$129.99</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="grid-item">
+                <!-- Skeleton -->
+                <div class="skeleton-elements">
+                    <div class="grid-image skeleton"></div>
+                    <div class="grid-content">
+                        <div class="grid-title skeleton"></div>
+                        <div class="grid-price skeleton"></div>
+                    </div>
+                </div>
+                <!-- Actual content -->
+                <div class="actual-content hidden">
+                    <img src="/api/placeholder/200/140" alt="Product image" class="grid-image">
+                    <div class="grid-content">
+                        <div class="grid-actual-title">Premium Phone Case</div>
+                        <div class="grid-actual-price">$24.99</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="grid-item">
+                <!-- Skeleton -->
+                <div class="skeleton-elements">
+                    <div class="grid-image skeleton"></div>
+                    <div class="grid-content">
+                        <div class="grid-title skeleton"></div>
+                        <div class="grid-price skeleton"></div>
+                    </div>
+                </div>
+                <!-- Actual content -->
+                <div class="actual-content hidden">
+                    <img src="/api/placeholder/200/140" alt="Product image" class="grid-image">
+                    <div class="grid-content">
+                        <div class="grid-actual-title">Smartphone Stand</div>
+                        <div class="grid-actual-price">$14.99</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="grid-item">
+                <!-- Skeleton -->
+                <div class="skeleton-elements">
+                    <div class="grid-image skeleton"></div>
+                    <div class="grid-content">
+                        <div class="grid-title skeleton"></div>
+                        <div class="grid-price skeleton"></div>
+                    </div>
+                </div>
+                <!-- Actual content -->
+                <div class="actual-content hidden">
+                    <img src="/api/placeholder/200/140" alt="Product image" class="grid-image">
+                    <div class="grid-content">
+                        <div class="grid-actual-title">Bluetooth Speaker</div>
+                        <div class="grid-actual-price">$49.99</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle between skeleton loader and actual content
+        const toggleButton = document.getElementById("toggleLoading");
+        let isLoading = true;
+
+        function toggleLoadingState() {
+            const skeletonElements = document.querySelectorAll(".skeleton-elements");
+            const actualContent = document.querySelectorAll(".actual-content");
+
+            if (isLoading) {
+                // Show content
+                skeletonElements.forEach(el => el.classList.add("hidden"));
+                actualContent.forEach(el => el.classList.remove("hidden"));
+                toggleButton.textContent = "Show Skeleton Loaders";
+            } else {
+                // Show skeletons
+                skeletonElements.forEach(el => el.classList.remove("hidden"));
+                actualContent.forEach(el => el.classList.add("hidden"));
+                toggleButton.textContent = "Show Actual Content";
+            }
+
+            isLoading = !isLoading;
+        }
+
+        toggleButton.addEventListener("click", toggleLoadingState);
+
+        // Auto-toggle after 3 seconds to demonstrate the skeleton loader effect
+        setTimeout(() => {
+            if (isLoading) {
+                toggleLoadingState();
+            }
+        }, 3000);
+    </script>
+</body>
+
+</html>
