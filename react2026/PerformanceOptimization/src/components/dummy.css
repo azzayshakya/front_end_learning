@@ -1,0 +1,100 @@
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+.model {
+  animation: fade-in 2s ease-in forwards;
+}
+
+.modernText {
+  font-family: "Inter", "Poppins", "Segoe UI", sans-serif;
+
+  font-size: 1.4rem;
+  font-weight: 600;
+
+  line-height: 1.7;
+  letter-spacing: 0.05em;
+
+  text-align: center;
+
+  padding: 20px;
+  margin: 20px 0;
+  font-weight: 900;
+
+  /* Gradient text */
+  /* background: linear-gradient(90deg, #963535, #727ead, #0a1129);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+
+  /* Drop shadow */
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.3);
+
+  /* Soft glass background */
+  /* background-color: rgba(255, 255, 255, 0.03); */
+  /* backdrop-filter: blur(10px); */
+
+  border-radius: 12px;
+
+  transition: all 0.35s ease;
+}
+
+.modernText:hover {
+  transform: translateY(-3px);
+
+  text-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.6),
+    0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* @keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modernText {
+  animation: fadeUp 0.8s ease;
+} */
+.model {
+  position: absolute;
+
+  height: 15rem;
+  width: 15rem;
+
+  background: red;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  /* animation */
+  animation: popupFromButton 0.35s ease forwards;
+}
+
+@keyframes popupFromButton {
+  0% {
+    transform: scale(0.1) translateY(40px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
