@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { ALL_ITEMS } from "./constants/data";
 import { ItemList } from "./components/ItemList";
 
@@ -15,14 +15,23 @@ export default function MainPage() {
   let delay = 0;
   while (delay < 250000000) delay++; // Simulated lag/freeze
 
-  const filteredItems = ALL_ITEMS.filter((item) =>
-    item.name.toLowerCase().includes(query.toLowerCase()),
-  );
+  // FIX 1: Recalculates ONLY when `query` changes
+  const filteredItems = useMemo(() => {
+    console.log(
+      "%c[Heavy Filter] Recalculating list...",
+      "color: red; font-weight: bold;",
+    );
+    let delay = 0;
+    while (delay < 250000000) delay++; // Simulated lag/freeze
 
+    return ALL_ITEMS.filter((item) =>
+      item.name.toLowerCase().includes(query.toLowerCase()),
+    );
+  }, [query]);
   // BUG 2: Creates a new function instance in memory on every render
-  const handleSelect = (name) => {
+  const handleSelect = useCallback((name) => {
     setSelectedItem(name);
-  };
+  }, []); // Empty dependency array: never recreate
 
   const containerStyle = {
     padding: "24px",
